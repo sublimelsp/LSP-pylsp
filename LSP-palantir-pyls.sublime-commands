@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Preferences: LSP-palantir-pyls Settings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/LSP-palantir-pyls/LSP-palantir-pyls.sublime-settings",
+            "default": "// Settings in here override those in \"LSP-palantir-pyls/LSP-palantir-pyls.sublime-settings\"\n{\n\t$0\n}\n"
+        }
+    }
+]
