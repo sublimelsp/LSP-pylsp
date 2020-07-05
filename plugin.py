@@ -4,7 +4,7 @@ import subprocess
 
 import sublime
 from LSP.plugin import AbstractPlugin
-from LSP.plugin.core.typing import Any, Dict, Optional, List
+from LSP.plugin.core.typing import Any, Dict, Optional
 
 
 class Pyls(AbstractPlugin):
