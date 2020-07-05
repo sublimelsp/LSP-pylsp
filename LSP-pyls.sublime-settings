@@ -34,36 +34,42 @@
     "pyls_black_version": "0.4.6",
     "pyls_isort_version": "0.1.1",
     "env": {
-        // Making Sublime's own libs available to the linters.
         "PYTHONPATH": "$sublime_py_files_dir:$sublime_packages_dir",
         "MYPY_PATH": "$sublime_py_files_dir:$sublime_packages_dir"
     },
     "settings": {
+        // --- env ------------------------------------------------------------
         "pyls.env": {
-            // Making Sublime's own libs available to the linters.
             "PYTHONPATH": "$sublime_py_files_dir:$sublime_packages_dir",
             "MYPY_PATH": "$sublime_py_files_dir:$sublime_packages_dir"
         },
-        // Configuration is computed first from user configuration (in home directory),
-        // overridden by configuration passed in by the language client,
-        // and then overridden by configuration discovered in the workspace.
-        "pyls.configurationSources": [],
+        // --- JEDI configuration ---------------------------------------------
         "pyls.plugins.jedi.extra_paths": [
             "$sublime_py_files_dir",
             "$sublime_packages_dir"
         ],
-        // Enable fuzzy matches when requesting autocomplete
         "pyls.plugins.jedi.jedi_completion.fuzzy": true,
         "pyls.plugins.jedi.pycodestyle.enabled": false,
-        // Linters
+        // --- Linters --------------------------------------------------------
+        // Configuration is computed first from user configuration (in home directory),
+        // overridden by configuration passed in by the language client,
+        // and then overridden by configuration discovered in the workspace.
+        //
+        // The default configuration source is pycodestyle, because the default
+        // linter is pycodestyle. If instead you want to use flake8, you must
+        // change "pyls.configurationSources" to ["flake8"], and you must
+        // enable the flake8 plugin (see below), and you must disable the
+        // pycodestyle plugin (see below).
+        "pyls.configurationSources": ["pycodestyle"],
         // By default, pycodestyle is enabled
         "pyls.plugins.pycodestyle.enabled": true,
         "pyls.plugins.pydocstyle.enabled": false,
         "pyls.plugins.pyflakes.enabled": false,
         "pyls.plugins.pylint.enabled": false,
+        "pyls.plugins.flake8_lint.enabled": false,
         "pyls.plugins.pyls_mypy.enabled": false,
         "pyls.plugins.pyls_mypy.live_mode": false,
-        // Formatters
+        // --- Formatters -----------------------------------------------------
         // By default, autopep8 is enabled
         "pyls.plugins.autopep8.enabled": true,
         "pyls.plugins.yapf.enabled": false,
