@@ -1,6 +1,29 @@
+// This file is read-only and lives in
+//
+//    $DATA/Installed Packages/LSP-pyls.sublime-package
+//
+// Provided you installed this package through Package Control. To modify one
+// of these settings, you should see a template file to your right where you
+// can override various key-value pairs.
+//
+// It is safe to partially override the "settings" key.
+//
+// For example, to select black as your formatter, you would put the following
+// in the *right* view:
+//
+// {
+//     "settings":
+//     {
+//         "pyls.plugins.autopep8.enabled": false,
+//         "pyls.plugins.pyls_black.enabled": true
+//     }
+// }
+//
+// You must then *save* the *right* view in
+// $DATA/Packages/User/LSP-pyls.sublime-settings.
 {
     "command": [
-        "$cache_path/LSP-palantir-pyls/bin/pyls"
+        "$cache_path/LSP-pyls/bin/pyls"
     ],
     "languages": [
         {
@@ -41,9 +64,9 @@
         "pyls.plugins.pyls_mypy.enabled": false,
         "pyls.plugins.pyls_mypy.live_mode": false,
         // Formatters
-        // By default, yapf is enabled
-        "pyls.plugins.yapf.enabled": true,
-        "pyls.plugins.autopep8.enabled": false,
+        // By default, autopep8 is enabled
+        "pyls.plugins.autopep8.enabled": true,
+        "pyls.plugins.yapf.enabled": false,
         "pyls.plugins.pyls_black.enabled": false,
         "pyls.plugins.pyls_isort.enabled": false,
     },

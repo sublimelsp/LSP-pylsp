@@ -7,15 +7,10 @@ from LSP.plugin import AbstractPlugin
 from LSP.plugin.core.typing import Any, Dict, Optional, List
 
 
-class PalantirPyls(AbstractPlugin):
-    @classmethod
-    def global_executable_requirements(cls) -> Optional[List[str]]:
-        # TODO: Make this do something
-        return [cls.python_exe()]
-
+class Pyls(AbstractPlugin):
     @classmethod
     def name(cls) -> str:
-        return "palantir-pyls"
+        return "pyls"
 
     @classmethod
     def additional_variables(cls) -> Optional[Dict[str, str]]:
@@ -26,7 +21,7 @@ class PalantirPyls(AbstractPlugin):
 
     @classmethod
     def basedir(cls) -> str:
-        return os.path.join(sublime.cache_path(), "LSP-palantir-pyls")
+        return os.path.join(sublime.cache_path(), "LSP-pyls")
 
     @classmethod
     def bindir(cls) -> str:
@@ -42,17 +37,17 @@ class PalantirPyls(AbstractPlugin):
 
     @classmethod
     def pyls_version_str(cls) -> str:
-        settings = sublime.load_settings("LSP-palantir-pyls.sublime-settings")
+        settings = sublime.load_settings("LSP-pyls.sublime-settings")
         return str(settings.get("pyls_version"))
 
     @classmethod
     def black_version_str(cls) -> str:
-        settings = sublime.load_settings("LSP-palantir-pyls.sublime-settings")
+        settings = sublime.load_settings("LSP-pyls.sublime-settings")
         return str(settings.get("pyls_black_version"))
 
     @classmethod
     def isort_version_str(cls) -> str:
-        settings = sublime.load_settings("LSP-palantir-pyls.sublime-settings")
+        settings = sublime.load_settings("LSP-pyls.sublime-settings")
         return str(settings.get("pyls_isort_version"))
 
     @classmethod
@@ -100,7 +95,7 @@ class PalantirPyls(AbstractPlugin):
         shutil.rmtree(cls.basedir(), ignore_errors=True)
         try:
             os.makedirs(cls.basedir(), exist_ok=True)
-            cls.run(cls.python_exe(), "-m", "venv", "LSP-palantir-pyls", cwd=sublime.cache_path())
+            cls.run(cls.python_exe(), "-m", "venv", "LSP-pyls", cwd=sublime.cache_path())
             pyls = "python-language-server[all]=={}".format(cls.pyls_version_str())
             black = "pyls-black=={}".format(cls.black_version_str())
             isort = "pyls-isort=={}".format(cls.isort_version_str())
