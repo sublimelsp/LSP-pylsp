@@ -1,6 +1,7 @@
 # LSP-pyls
 
-This is a helper package that automatically installs and updates the Python Language Server (pyls) for you.
+This is a helper package that automatically installs and updates the
+[Python Language Server](https://github.com/palantir/python-language-server) (pyls) for you.
 
 To use this package, you must have the [LSP](https://packagecontrol.io/packages/LSP) package installed as well.
 
