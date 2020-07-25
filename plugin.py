@@ -62,7 +62,8 @@ class Pyls(AbstractPlugin):
             startupinfo.dwFlags |= flag
         else:
             startupinfo = None
-        return subprocess.check_output(args=args, cwd=kwargs.get("cwd"), startupinfo=startupinfo)
+        return subprocess.check_output(args=args, cwd=kwargs.get("cwd"), startupinfo=startupinfo,
+                                       stderr=subprocess.STDOUT)
 
     @classmethod
     def needs_update_or_installation(cls) -> bool:
