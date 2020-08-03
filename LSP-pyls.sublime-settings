@@ -34,19 +34,19 @@
     "pyls_black_version": "0.4.6",
     "pyls_isort_version": "0.1.1",
     "env": {
-        "PYTHONPATH": "$sublime_py_files_dir:$sublime_packages_dir",
-        "MYPY_PATH": "$sublime_py_files_dir:$sublime_packages_dir"
+        "PYTHONPATH": "$sublime_py_files_dir:$packages",
+        "MYPY_PATH": "$sublime_py_files_dir:$packages"
     },
     "settings": {
         // --- env ------------------------------------------------------------
         "pyls.env": {
-            "PYTHONPATH": "$sublime_py_files_dir:$sublime_packages_dir",
-            "MYPY_PATH": "$sublime_py_files_dir:$sublime_packages_dir"
+            "PYTHONPATH": "$sublime_py_files_dir:$packages",
+            "MYPY_PATH": "$sublime_py_files_dir:$packages"
         },
         // --- JEDI configuration ---------------------------------------------
         "pyls.plugins.jedi.extra_paths": [
             "$sublime_py_files_dir",
-            "$sublime_packages_dir"
+            "$packages"
         ],
         "pyls.plugins.jedi.jedi_completion.fuzzy": true,
         "pyls.plugins.jedi.pycodestyle.enabled": false,
