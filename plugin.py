@@ -67,25 +67,24 @@ class Pyls(AbstractPlugin):
 
     @classmethod
     def needs_update_or_installation(cls) -> bool:
-        if os.path.exists(cls.server_exe()):
-            if os.path.exists(cls.pip_exe()):
-                requirements = {
-                    "pyls": [True, "python-language-server"],
-                    "black": [True, "pyls-black"],
-                    "isort": [True, "pyls-isort"]
-                }  # type: Dict[str, List[Any]]
-                for line in cls.run(cls.pip_exe(), "freeze").decode("ascii").splitlines():
-                    for name, requirement in requirements.items():
-                        prefix = requirement[1] + "=="
-                        if line.startswith(prefix):
-                            stored_version_str = line[len(prefix):].strip()
-                            attr = "{}_version_str".format(name)
-                            version_str = getattr(cls, attr)
-                            assert callable(version_str)
-                            if stored_version_str == version_str():
-                                requirement[0] = False
-                                continue
-                return any(map(operator.itemgetter(0), requirements.values()))
+        if os.path.exists(cls.server_exe()) and os.path.exists(cls.pip_exe()):
+            requirements = {
+                "pyls": [True, "python-language-server"],
+                "black": [True, "pyls-black"],
+                "isort": [True, "pyls-isort"]
+            }  # type: Dict[str, List[Any]]
+            for line in cls.run(cls.pip_exe(), "freeze").decode("ascii").splitlines():
+                for name, requirement in requirements.items():
+                    prefix = requirement[1] + "=="
+                    if line.startswith(prefix):
+                        stored_version_str = line[len(prefix):].strip()
+                        attr = "{}_version_str".format(name)
+                        version_str = getattr(cls, attr)
+                        assert callable(version_str)
+                        if stored_version_str == version_str():
+                            requirement[0] = False
+                            continue
+            return any(map(operator.itemgetter(0), requirements.values()))
         return True
 
     @classmethod
