@@ -1,3 +1,4 @@
+import operator
 import os
 import shutil
 import subprocess
@@ -68,26 +69,23 @@ class Pyls(AbstractPlugin):
     def needs_update_or_installation(cls) -> bool:
         if os.path.exists(cls.server_exe()):
             if os.path.exists(cls.pip_exe()):
-                pyls_needs_update = True
-                black_needs_update = True
-                isort_needs_update = True
-                for line in cls.run(cls.pip_exe(), "list").decode("ascii").splitlines():
-                    if line.startswith("python-language-server "):
-                        length = len("python-language-server ")
-                        stored_version_str = line[length:].strip()
-                        if stored_version_str == cls.pyls_version_str():
-                            pyls_needs_update = False
-                    elif line.startswith("pyls-black "):
-                        length = len("pyls-black ")
-                        stored_version_str = line[length:].strip()
-                        if stored_version_str == cls.black_version_str():
-                            black_needs_update = False
-                    elif line.startswith("pyls-isort "):
-                        length = len("pyls-isort ")
-                        stored_version_str = line[length:].strip()
-                        if stored_version_str == cls.isort_version_str():
-                            isort_needs_update = False
-                return pyls_needs_update or black_needs_update or isort_needs_update
+                requirements = {
+                    "pyls": [True, "python-language-server"],
+                    "black": [True, "pyls-black"],
+                    "isort": [True, "pyls-isort"]
+                }  # type: Dict[str, List[Any]]
+                for line in cls.run(cls.pip_exe(), "freeze").decode("ascii").splitlines():
+                    for name, requirement in requirements.items():
+                        prefix = requirement[1] + "=="
+                        if line.startswith(prefix):
+                            stored_version_str = line[len(prefix):].strip()
+                            attr = "{}_version_str".format(name)
+                            version_str = getattr(cls, attr)
+                            assert callable(version_str)
+                            if stored_version_str == version_str():
+                                requirement[0] = False
+                                continue
+                return any(map(operator.itemgetter(0), requirements.values()))
         return True
 
     @classmethod
