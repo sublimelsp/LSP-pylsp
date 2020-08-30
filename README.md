@@ -3,7 +3,11 @@
 This is a helper package that automatically installs and updates the
 [Python Language Server](https://github.com/palantir/python-language-server) (pyls) for you.
 
-To use this package, you must have the [LSP](https://packagecontrol.io/packages/LSP) package installed as well.
+To use this package, you must have:
+
+- An executable `python` (on Windows) or `python3` (on Linux/OSX)
+- The [LSP](https://packagecontrol.io/packages/LSP) package
+- For Ubuntu and Debian users, you must also install `python3-venv` with `apt`
 
 ## Applicable Selectors
 
