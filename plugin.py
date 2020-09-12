@@ -5,7 +5,7 @@ import subprocess
 
 import sublime
 from LSP.plugin import AbstractPlugin
-from LSP.plugin.core.typing import Any, Dict, Optional
+from LSP.plugin.core.typing import Any, Dict, List, Optional
 
 
 class Pyls(AbstractPlugin):
@@ -96,8 +96,9 @@ class Pyls(AbstractPlugin):
             pyls = "python-language-server[all]=={}".format(cls.pyls_version_str())
             black = "pyls-black=={}".format(cls.black_version_str())
             isort = "pyls-isort=={}".format(cls.isort_version_str())
+            jsonrpc = "python-jsonrpc-server==0.3.4"
             mypy = "git+https://github.com/tomv564/pyls-mypy.git"
-            cls.run(cls.pip_exe(), "install", pyls, black, mypy, isort)
+            cls.run(cls.pip_exe(), "install", pyls, black, mypy, isort, jsonrpc)
         except Exception:
             shutil.rmtree(cls.basedir(), ignore_errors=True)
             raise
