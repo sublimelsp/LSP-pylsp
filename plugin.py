@@ -72,11 +72,10 @@ class Pyls(AbstractPlugin):
     @classmethod
     def needs_update_or_installation(cls) -> bool:
         if os.path.exists(cls.server_exe()) and os.path.exists(cls.pip_exe()):
-            python_version = cls.run(cls.python_exe(), '--version')
             if not os.path.exists(cls.python_version()):
                 return True
             with open(cls.python_version(), 'rb') as f:
-                if f.readline() != python_version:
+                if f.readline() != cls.run(cls.python_exe(), '--version'):
                     return True
             requirements = {
                 "pyls": [True, "python-language-server"],
