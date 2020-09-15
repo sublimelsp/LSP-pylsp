@@ -30,9 +30,9 @@
             "languageId": "python",
         }
     ],
-    "pyls_version": "0.34.1",
+    "pyls_version": "0.35.0",
     "pyls_black_version": "0.4.6",
-    "pyls_isort_version": "0.1.1",
+    "pyls_isort_version": "0.2.0",
     "env": {
         "PYTHONPATH": "$sublime_py_files_dir:$sublime_packages_dir",
         "MYPY_PATH": "$sublime_py_files_dir:$sublime_packages_dir"
