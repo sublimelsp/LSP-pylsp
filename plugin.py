@@ -5,6 +5,8 @@ import subprocess
 
 import sublime
 from LSP.plugin import AbstractPlugin
+from LSP.plugin import register_plugin
+from LSP.plugin import unregister_plugin
 from LSP.plugin.core.typing import Any, Dict, Optional
 
 
@@ -101,3 +103,11 @@ class Pyls(AbstractPlugin):
         except Exception:
             shutil.rmtree(cls.basedir(), ignore_errors=True)
             raise
+
+
+# def plugin_loaded() -> None:
+#     register_plugin(Pyls)
+
+
+# def plugin_unloaded() -> None:
+#     unregister_plugin(Pyls)
