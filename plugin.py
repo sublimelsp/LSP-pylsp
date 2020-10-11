@@ -1,13 +1,12 @@
-import operator
-import os
-import shutil
-import subprocess
-
-import sublime
 from LSP.plugin import AbstractPlugin
 from LSP.plugin import register_plugin
 from LSP.plugin import unregister_plugin
-from LSP.plugin.core.typing import Any, Dict, Optional
+from LSP.plugin.core.typing import Any, Dict, List, Optional
+import operator
+import os
+import shutil
+import sublime
+import subprocess
 
 
 class Pyls(AbstractPlugin):
@@ -23,7 +22,7 @@ class Pyls(AbstractPlugin):
 
     @classmethod
     def basedir(cls) -> str:
-        return os.path.join(sublime.cache_path(), "LSP-pyls")
+        return os.path.join(sublime.cache_path(), "..", "Package Storage", "LSP-pyls")
 
     @classmethod
     def bindir(cls) -> str:
@@ -57,6 +56,10 @@ class Pyls(AbstractPlugin):
         return "python" if sublime.platform() == "windows" else "python3"
 
     @classmethod
+    def python_version(cls) -> str:
+        return os.path.join(cls.basedir(), 'python_version')
+
+    @classmethod
     def run(cls, *args: Any, **kwargs: Any) -> bytes:
         if sublime.platform() == "windows":
             startupinfo = subprocess.STARTUPINFO()  # type: ignore
@@ -70,6 +73,11 @@ class Pyls(AbstractPlugin):
     @classmethod
     def needs_update_or_installation(cls) -> bool:
         if os.path.exists(cls.server_exe()) and os.path.exists(cls.pip_exe()):
+            if not os.path.exists(cls.python_version()):
+                return True
+            with open(cls.python_version(), 'rb') as f:
+                if f.readline() != cls.run(cls.python_exe(), '--version'):
+                    return True
             requirements = {
                 "pyls": [True, "python-language-server"],
                 "black": [True, "pyls-black"],
@@ -100,14 +108,16 @@ class Pyls(AbstractPlugin):
             isort = "pyls-isort=={}".format(cls.isort_version_str())
             mypy = "git+https://github.com/tomv564/pyls-mypy.git"
             cls.run(cls.pip_exe(), "install", pyls, black, mypy, isort)
+            with open(cls.python_version(), 'wb') as f:
+                f.write(cls.run(cls.python_exe(), '--version'))
         except Exception:
             shutil.rmtree(cls.basedir(), ignore_errors=True)
             raise
 
 
-# def plugin_loaded() -> None:
-#     register_plugin(Pyls)
+def plugin_loaded() -> None:
+    register_plugin(Pyls)
 
 
-# def plugin_unloaded() -> None:
-#     unregister_plugin(Pyls)
+def plugin_unloaded() -> None:
+    unregister_plugin(Pyls)
