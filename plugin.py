@@ -102,7 +102,8 @@ class Pyls(AbstractPlugin):
         shutil.rmtree(cls.basedir(), ignore_errors=True)
         try:
             os.makedirs(cls.basedir(), exist_ok=True)
-            cls.run(cls.python_exe(), "-m", "venv", "LSP-pyls", cwd=sublime.cache_path())
+            cwd = os.path.join(sublime.cache_path(), "..", "Package Storage")
+            cls.run(cls.python_exe(), "-m", "venv", "LSP-pyls", cwd=cwd)
             pyls = "python-language-server[all]=={}".format(cls.pyls_version_str())
             black = "pyls-black=={}".format(cls.black_version_str())
             isort = "pyls-isort=={}".format(cls.isort_version_str())

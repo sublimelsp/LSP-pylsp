@@ -23,7 +23,7 @@
 // $DATA/Packages/User/LSP-pyls.sublime-settings.
 {
     "command": [
-        "$cache_path/LSP-pyls/bin/pyls"
+        "$cache_path/../Package Storage/LSP-pyls/bin/pyls"
     ],
     "languages": [
         {
