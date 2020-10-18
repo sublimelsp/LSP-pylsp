@@ -22,7 +22,7 @@ class Pyls(AbstractPlugin):
 
     @classmethod
     def basedir(cls) -> str:
-        return os.path.join(sublime.cache_path(), "..", "Package Storage", "LSP-pyls")
+        return os.path.join(cls.storage_path(), "LSP-pyls")
 
     @classmethod
     def bindir(cls) -> str:
@@ -102,8 +102,7 @@ class Pyls(AbstractPlugin):
         shutil.rmtree(cls.basedir(), ignore_errors=True)
         try:
             os.makedirs(cls.basedir(), exist_ok=True)
-            cwd = os.path.join(sublime.cache_path(), "..", "Package Storage")
-            cls.run(cls.python_exe(), "-m", "venv", "LSP-pyls", cwd=cwd)
+            cls.run(cls.python_exe(), "-m", "venv", "LSP-pyls", cwd=cls.storage_path())
             pyls = "python-language-server[all]=={}".format(cls.pyls_version_str())
             black = "pyls-black=={}".format(cls.black_version_str())
             isort = "pyls-isort=={}".format(cls.isort_version_str())
