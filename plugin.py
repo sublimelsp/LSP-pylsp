@@ -15,6 +15,10 @@ class Pyls(AbstractPlugin):
         return "pyls"
 
     @classmethod
+    def file_extension(cls) -> str:
+        return ".exe" if sublime.platform() == "windows" else ""
+
+    @classmethod
     def additional_variables(cls) -> Optional[Dict[str, str]]:
         variables = {}
         variables['sublime_py_files_dir'] = os.path.dirname(sublime.__file__)
@@ -32,11 +36,11 @@ class Pyls(AbstractPlugin):
 
     @classmethod
     def server_exe(cls) -> str:
-        return os.path.join(cls.bindir(), "pyls")
+        return os.path.join(cls.bindir(), "pyls" + cls.file_extension())
 
     @classmethod
     def pip_exe(cls) -> str:
-        return os.path.join(cls.bindir(), "pip")
+        return os.path.join(cls.bindir(), "pip" + cls.file_extension())
 
     @classmethod
     def pyls_version_str(cls) -> str:
