@@ -26,7 +26,8 @@ class Pyls(AbstractPlugin):
 
     @classmethod
     def bindir(cls) -> str:
-        return os.path.join(cls.basedir(), "bin")
+        bin_dir = "Scripts" if sublime.platform() == "windows" else "bin"
+        return os.path.join(cls.basedir(), bin_dir)
 
     @classmethod
     def server_exe(cls) -> str:
