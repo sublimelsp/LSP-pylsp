@@ -18,6 +18,7 @@ class Pyls(AbstractPlugin):
     def additional_variables(cls) -> Optional[Dict[str, str]]:
         variables = {}
         variables['sublime_py_files_dir'] = os.path.dirname(sublime.__file__)
+        variables['pyls_path'] = cls.server_exe()
         return variables
 
     @classmethod
@@ -26,7 +27,8 @@ class Pyls(AbstractPlugin):
 
     @classmethod
     def bindir(cls) -> str:
-        return os.path.join(cls.basedir(), "bin")
+        bin_dir = "Scripts" if sublime.platform() == "windows" else "bin"
+        return os.path.join(cls.basedir(), bin_dir)
 
     @classmethod
     def server_exe(cls) -> str:
