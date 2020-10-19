@@ -18,6 +18,7 @@ class Pyls(AbstractPlugin):
     def additional_variables(cls) -> Optional[Dict[str, str]]:
         variables = {}
         variables['sublime_py_files_dir'] = os.path.dirname(sublime.__file__)
+        variables['pyls_path'] = cls.server_exe()
         return variables
 
     @classmethod
