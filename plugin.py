@@ -1,7 +1,8 @@
-from LSP.plugin import AbstractPlugin
-from LSP.plugin import register_plugin
-from LSP.plugin import unregister_plugin
 from LSP.plugin.core.typing import Any, Dict, List, Optional
+from lsp_utils import GenericClientHandler
+from lsp_utils import ServerResourceInterface
+from lsp_utils import ServerStatus
+from lsp_utils.helpers import run_command_sync
 import operator
 import os
 import shutil
@@ -9,38 +10,11 @@ import sublime
 import subprocess
 
 
-class Pyls(AbstractPlugin):
-    @classmethod
-    def name(cls) -> str:
-        return "pyls"
+class PylsServerResource(ServerResourceInterface):
 
     @classmethod
     def file_extension(cls) -> str:
         return ".exe" if sublime.platform() == "windows" else ""
-
-    @classmethod
-    def additional_variables(cls) -> Optional[Dict[str, str]]:
-        variables = {}
-        variables['sublime_py_files_dir'] = os.path.dirname(sublime.__file__)
-        variables['pyls_path'] = cls.server_exe()
-        return variables
-
-    @classmethod
-    def basedir(cls) -> str:
-        return os.path.join(cls.storage_path(), "LSP-pyls")
-
-    @classmethod
-    def bindir(cls) -> str:
-        bin_dir = "Scripts" if sublime.platform() == "windows" else "bin"
-        return os.path.join(cls.basedir(), bin_dir)
-
-    @classmethod
-    def server_exe(cls) -> str:
-        return os.path.join(cls.bindir(), "pyls" + cls.file_extension())
-
-    @classmethod
-    def pip_exe(cls) -> str:
-        return os.path.join(cls.bindir(), "pip" + cls.file_extension())
 
     @classmethod
     def pyls_version_str(cls) -> str:
@@ -62,10 +36,6 @@ class Pyls(AbstractPlugin):
         return "python" if sublime.platform() == "windows" else "python3"
 
     @classmethod
-    def python_version(cls) -> str:
-        return os.path.join(cls.basedir(), 'python_version')
-
-    @classmethod
     def run(cls, *args: Any, **kwargs: Any) -> bytes:
         if sublime.platform() == "windows":
             startupinfo = subprocess.STARTUPINFO()  # type: ignore
@@ -76,54 +46,113 @@ class Pyls(AbstractPlugin):
         return subprocess.check_output(args=args, cwd=kwargs.get("cwd"), startupinfo=startupinfo,
                                        stderr=subprocess.STDOUT)
 
-    @classmethod
-    def needs_update_or_installation(cls) -> bool:
-        if os.path.exists(cls.server_exe()) and os.path.exists(cls.pip_exe()):
-            if not os.path.exists(cls.python_version()):
+    def __init__(self, storage_path: str) -> None:
+        self._storage_path = storage_path
+        self._status = ServerStatus.UNINITIALIZED
+
+    # --- ServerResourceInterface handlers ----------------------------------------------------------------------------
+
+    @property
+    def binary_path(self) -> str:
+        return self.server_exe()
+
+    def needs_installation(self) -> bool:
+        if os.path.exists(self.server_exe()) and os.path.exists(self.pip_exe()):
+            if not os.path.exists(self.python_version()):
                 return True
-            with open(cls.python_version(), 'rb') as f:
-                if f.readline() != cls.run(cls.python_exe(), '--version'):
+            with open(self.python_version(), 'rb') as f:
+                if f.readline() != self.run(self.python_exe(), '--version'):
                     return True
             requirements = {
                 "pyls": [True, "python-language-server"],
                 "black": [True, "pyls-black"],
                 "isort": [True, "pyls-isort"]
             }  # type: Dict[str, List[Any]]
-            for line in cls.run(cls.pip_exe(), "freeze").decode("ascii").splitlines():
+            for line in self.run(self.pip_exe(), "freeze").decode("ascii").splitlines():
                 for name, requirement in requirements.items():
                     prefix = requirement[1] + "=="
                     if line.startswith(prefix):
                         stored_version_str = line[len(prefix):].strip()
                         attr = "{}_version_str".format(name)
-                        version_str = getattr(cls, attr)
+                        version_str = getattr(self, attr)
                         assert callable(version_str)
                         if stored_version_str == version_str():
                             requirement[0] = False
                             continue
-            return any(map(operator.itemgetter(0), requirements.values()))
+            if not any(map(operator.itemgetter(0), requirements.values())):
+                self._status = ServerStatus.READY
+                return False
+        return True
+
+    def install_or_update(self) -> None:
+        shutil.rmtree(self.basedir(), ignore_errors=True)
+        try:
+            os.makedirs(self.basedir(), exist_ok=True)
+            self.run(self.python_exe(), "-m", "venv", "LSP-pyls", cwd=self._storage_path)
+            pyls = "python-language-server[all]=={}".format(self.pyls_version_str())
+            black = "pyls-black=={}".format(self.black_version_str())
+            isort = "pyls-isort=={}".format(self.isort_version_str())
+            mypy = "git+https://github.com/tomv564/pyls-mypy.git"
+            self.run(self.pip_exe(), "install", pyls, black, mypy, isort)
+            with open(self.python_version(), 'wb') as f:
+                f.write(self.run(self.python_exe(), '--version'))
+        except Exception:
+            shutil.rmtree(self.basedir(), ignore_errors=True)
+            raise
+        self._status = ServerStatus.READY
+
+    def get_status(self) -> int:
+        return self._status
+
+    # --- internal handlers -------------------------------------------------------------------------------------------
+
+    def basedir(self) -> str:
+        return os.path.join(self._storage_path, "LSP-pyls")
+
+    def bindir(self) -> str:
+        bin_dir = "Scripts" if sublime.platform() == "windows" else "bin"
+        return os.path.join(self.basedir(), bin_dir)
+
+    def server_exe(self) -> str:
+        return os.path.join(self.bindir(), "pyls" + self.file_extension())
+
+    def pip_exe(self) -> str:
+        return os.path.join(self.bindir(), "pip" + self.file_extension())
+
+    def python_version(self) -> str:
+        return os.path.join(self.basedir(), 'python_version')
+
+
+class Pyls(GenericClientHandler):
+    package_name = __package__
+    _server = None  # type: Optional[ServerResourceInterface]
+
+    @classmethod
+    def get_displayed_name(cls) -> str:
+        return "pyls"
+
+    @classmethod
+    def get_additional_variables(cls) -> Optional[Dict[str, str]]:
+        variables = super().get_additional_variables()
+        variables.update({
+            'sublime_py_files_dir': os.path.dirname(sublime.__file__),
+        })
+        return variables
+
+    @classmethod
+    def manages_server(cls) -> bool:
         return True
 
     @classmethod
-    def install_or_update(cls) -> None:
-        shutil.rmtree(cls.basedir(), ignore_errors=True)
-        try:
-            os.makedirs(cls.basedir(), exist_ok=True)
-            cls.run(cls.python_exe(), "-m", "venv", "LSP-pyls", cwd=cls.storage_path())
-            pyls = "python-language-server[all]=={}".format(cls.pyls_version_str())
-            black = "pyls-black=={}".format(cls.black_version_str())
-            isort = "pyls-isort=={}".format(cls.isort_version_str())
-            mypy = "git+https://github.com/tomv564/pyls-mypy.git"
-            cls.run(cls.pip_exe(), "install", pyls, black, mypy, isort)
-            with open(cls.python_version(), 'wb') as f:
-                f.write(cls.run(cls.python_exe(), '--version'))
-        except Exception:
-            shutil.rmtree(cls.basedir(), ignore_errors=True)
-            raise
+    def get_server(cls) -> Optional[ServerResourceInterface]:
+        if not cls._server:
+            cls._server = PylsServerResource(cls.storage_path())
+        return cls._server
 
 
 def plugin_loaded() -> None:
-    register_plugin(Pyls)
+    Pyls.setup()
 
 
 def plugin_unloaded() -> None:
-    unregister_plugin(Pyls)
+    Pyls.cleanup()
