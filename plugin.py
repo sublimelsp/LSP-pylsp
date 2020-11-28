@@ -2,7 +2,6 @@ from LSP.plugin.core.typing import Any, Dict, List, Optional
 from lsp_utils import GenericClientHandler
 from lsp_utils import ServerResourceInterface
 from lsp_utils import ServerStatus
-from lsp_utils.helpers import run_command_sync
 import operator
 import os
 import shutil
@@ -13,23 +12,24 @@ import subprocess
 class PylsServerResource(ServerResourceInterface):
 
     @classmethod
+    def settings(cls) -> sublime.Settings:
+        return sublime.load_settings("LSP-pyls.sublime-settings")
+
+    @classmethod
     def file_extension(cls) -> str:
         return ".exe" if sublime.platform() == "windows" else ""
 
     @classmethod
     def pyls_version_str(cls) -> str:
-        settings = sublime.load_settings("LSP-pyls.sublime-settings")
-        return str(settings.get("pyls_version"))
+        return str(cls.settings().get("pyls_version"))
 
     @classmethod
     def black_version_str(cls) -> str:
-        settings = sublime.load_settings("LSP-pyls.sublime-settings")
-        return str(settings.get("pyls_black_version"))
+        return str(cls.settings().get("pyls_black_version"))
 
     @classmethod
     def isort_version_str(cls) -> str:
-        settings = sublime.load_settings("LSP-pyls.sublime-settings")
-        return str(settings.get("pyls_isort_version"))
+        return str(cls.settings().get("pyls_isort_version"))
 
     @classmethod
     def python_exe(cls) -> str:
@@ -88,7 +88,7 @@ class PylsServerResource(ServerResourceInterface):
         shutil.rmtree(self.basedir(), ignore_errors=True)
         try:
             os.makedirs(self.basedir(), exist_ok=True)
-            self.run(self.python_exe(), "-m", "venv", "LSP-pyls", cwd=self._storage_path)
+            self.run(self.python_exe(), "-m", "venv", __package__, cwd=self._storage_path)
             pyls = "python-language-server[all]=={}".format(self.pyls_version_str())
             black = "pyls-black=={}".format(self.black_version_str())
             isort = "pyls-isort=={}".format(self.isort_version_str())
@@ -107,7 +107,7 @@ class PylsServerResource(ServerResourceInterface):
     # --- internal handlers -------------------------------------------------------------------------------------------
 
     def basedir(self) -> str:
-        return os.path.join(self._storage_path, "LSP-pyls")
+        return os.path.join(self._storage_path, __package__)
 
     def bindir(self) -> str:
         bin_dir = "Scripts" if sublime.platform() == "windows" else "bin"
@@ -132,7 +132,7 @@ class Pyls(GenericClientHandler):
         return "pyls"
 
     @classmethod
-    def get_additional_variables(cls) -> Optional[Dict[str, str]]:
+    def get_additional_variables(cls) -> Dict[str, str]:
         variables = super().get_additional_variables()
         variables.update({
             'sublime_py_files_dir': os.path.dirname(sublime.__file__),
