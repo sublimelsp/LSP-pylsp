@@ -1,10 +1,7 @@
 from LSP.plugin.core.typing import Dict
 from lsp_utils import PipClientHandler
-import operator
 import os
-import shutil
 import sublime
-import subprocess
 
 
 class Pyls(PipClientHandler):
