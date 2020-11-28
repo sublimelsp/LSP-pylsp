@@ -22,12 +22,15 @@
 // You must then *save* the *right* view in
 // $DATA/Packages/User/LSP-pyls.sublime-settings.
 {
-    "command": [
-        "$pyls_path"
-    ],
+    "command": ["$server_path"],
+    // ST4
+    "selector": "source.python",
+    // ST3
     "languages": [
         {
             "languageId": "python",
+            "scopes": ["source.python"],
+            "syntaxes": ["Packages/Python/Python.sublime-syntax"],
         }
     ],
     "pyls_version": "0.35.0",
