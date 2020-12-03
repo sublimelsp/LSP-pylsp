@@ -33,9 +33,6 @@
             "syntaxes": ["Packages/Python/Python.sublime-syntax"],
         }
     ],
-    "pyls_version": "0.35.0",
-    "pyls_black_version": "0.4.6",
-    "pyls_isort_version": "0.2.0",
     "env": {
         "PYTHONPATH": "$sublime_py_files_dir:$packages",
         "MYPY_PATH": "$sublime_py_files_dir:$packages"
