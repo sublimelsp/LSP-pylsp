@@ -1,5 +1,5 @@
 from LSP.plugin.core.typing import Dict
-from lsp_utils import PipClientHandler
+from lsp_utils.pip_client_handler import PipClientHandler
 import os
 import sublime
 
@@ -20,6 +20,7 @@ class Pyls(PipClientHandler):
             'sublime_py_files_dir': os.path.dirname(sublime.__file__),
         })
         return variables
+
 
 def plugin_loaded() -> None:
     Pyls.setup()
