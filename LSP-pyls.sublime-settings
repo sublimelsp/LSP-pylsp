@@ -48,8 +48,8 @@
             "$sublime_py_files_dir",
             "$packages"
         ],
-        "pyls.plugins.jedi.jedi_completion.fuzzy": true,
-        "pyls.plugins.jedi.pycodestyle.enabled": false,
+        "pyls.plugins.jedi_completion.enabled": true,
+        "pyls.plugins.jedi_completion.fuzzy": true,
         // --- Linters --------------------------------------------------------
         // Configuration is computed first from user configuration (in home directory),
         // overridden by configuration passed in by the language client,
