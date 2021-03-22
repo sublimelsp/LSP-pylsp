@@ -66,7 +66,7 @@
         "pyls.plugins.pydocstyle.enabled": false,
         "pyls.plugins.pyflakes.enabled": false,
         "pyls.plugins.pylint.enabled": false,
-        "pyls.plugins.flake8_lint.enabled": false,
+        "pyls.plugins.flake8.enabled": false,
         "pyls.plugins.pyls_mypy.enabled": false,
         "pyls.plugins.pyls_mypy.live_mode": false,
         // --- Formatters -----------------------------------------------------

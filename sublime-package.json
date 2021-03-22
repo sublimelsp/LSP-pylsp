@@ -44,7 +44,7 @@
                       "default": true,
                       "description": "Enable or disable the plugin."
                     },
-                    "pyls.plugins.flake8_lint.enabled": {
+                    "pyls.plugins.flake8.enabled": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable the plugin."

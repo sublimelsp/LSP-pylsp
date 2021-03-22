@@ -53,7 +53,7 @@ The default linter is `pycodestyle`. The possible linters are:
 
 - pycodestyle (`"pyls.plugins.pycodestyle.enabled"` in the settings)
 - pydocstyle (`"pyls.plugins.pydocstyle.enabled"` in the settings)
-- flake8 (`"pyls.plugins.flake8_lint.enabled"` in the settings)
+- flake8 (`"pyls.plugins.flake8.enabled"` in the settings)
   For flake8 to work, you must also modify `"pyls.configurationSources"` to be `["flake8"]` instead of the default
   `["pycodestyle"]`.
 - pyflakes (`"pyls.plugins.pyflakes.enabled"` in the settings)
