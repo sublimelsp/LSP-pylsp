@@ -16,11 +16,11 @@
                 "id": "lsp-servers",
                 "children": [
                   {
-                    "caption": "LSP-pyls",
+                    "caption": "LSP-pylsp",
                     "command": "edit_settings",
                     "args": {
-                      "base_file": "${packages}/LSP-pyls/LSP-pyls.sublime-settings",
-                      "default": "// Settings in here override those in \"LSP-pyls/LSP-pyls.sublime-settings\"\n\n{\n\t$0\n}\n",
+                      "base_file": "${packages}/LSP-pylsp/LSP-pylsp.sublime-settings",
+                      "default": "// Settings in here override those in \"LSP-pylsp/LSP-pylsp.sublime-settings\"\n\n{\n\t$0\n}\n",
                     },
                   },
                 ],

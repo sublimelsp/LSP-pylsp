@@ -4,27 +4,29 @@ import os
 import sublime
 
 
-class Pyls(PipClientHandler):
+class Pylsp(PipClientHandler):
     package_name = __package__
-    requirements_txt_path = 'requirements.txt'
-    server_filename = 'pyls'
+    requirements_txt_path = "requirements.txt"
+    server_filename = "pylsp"
 
     @classmethod
     def get_displayed_name(cls) -> str:
-        return "pyls"
+        return "pylsp"
 
     @classmethod
     def get_additional_variables(cls) -> Dict[str, str]:
         variables = super().get_additional_variables()
-        variables.update({
-            'sublime_py_files_dir': os.path.dirname(sublime.__file__),
-        })
+        variables.update(
+            {
+                "sublime_py_files_dir": os.path.dirname(sublime.__file__),
+            }
+        )
         return variables
 
 
 def plugin_loaded() -> None:
-    Pyls.setup()
+    Pylsp.setup()
 
 
 def plugin_unloaded() -> None:
-    Pyls.cleanup()
+    Pylsp.cleanup()

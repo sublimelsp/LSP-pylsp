@@ -1,4 +1,4 @@
-python-language-server[all]==0.36.2
-pyls_black==0.4.6
-pyls_isort==0.2.0
-git+https://github.com/tomv564/pyls-mypy.git
+python-lsp-server[all]==1.0.1
+python-lsp-black==1.0.0
+pyls_isort==0.2.2
+mypy-ls==0.4.0

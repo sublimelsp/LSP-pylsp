@@ -1,6 +1,6 @@
 // This file is read-only and lives in
 //
-//    $DATA/Installed Packages/LSP-pyls.sublime-package
+//    $DATA/Installed Packages/LSP-pylsp.sublime-package
 //
 // Provided you installed this package through Package Control. To modify one
 // of these settings, you should see a template file to your right where you
@@ -14,13 +14,13 @@
 // {
 //     "settings":
 //     {
-//         "pyls.plugins.autopep8.enabled": false,
-//         "pyls.plugins.pyls_black.enabled": true
+//         "pylsp.plugins.autopep8.enabled": false,
+//         "pylsp.plugins.pyls_black.enabled": true
 //     }
 // }
 //
 // You must then *save* the *right* view in
-// $DATA/Packages/User/LSP-pyls.sublime-settings.
+// $DATA/Packages/User/LSP-pylsp.sublime-settings.
 {
     "command": ["$server_path"],
     // ST4
@@ -39,17 +39,17 @@
     },
     "settings": {
         // --- env ------------------------------------------------------------
-        "pyls.env": {
+        "pylsp.env": {
             "PYTHONPATH": "$sublime_py_files_dir:$packages",
             "MYPY_PATH": "$sublime_py_files_dir:$packages"
         },
         // --- JEDI configuration ---------------------------------------------
-        "pyls.plugins.jedi.extra_paths": [
+        "pylsp.plugins.jedi.extra_paths": [
             "$sublime_py_files_dir",
             "$packages"
         ],
-        "pyls.plugins.jedi_completion.enabled": true,
-        "pyls.plugins.jedi_completion.fuzzy": true,
+        "pylsp.plugins.jedi_completion.enabled": true,
+        "pylsp.plugins.jedi_completion.fuzzy": true,
         // --- Linters --------------------------------------------------------
         // Configuration is computed first from user configuration (in home directory),
         // overridden by configuration passed in by the language client,
@@ -57,23 +57,24 @@
         //
         // The default configuration source is pycodestyle, because the default
         // linter is pycodestyle. If instead you want to use flake8, you must
-        // change "pyls.configurationSources" to ["flake8"], and you must
+        // change "pylsp.configurationSources" to ["flake8"], and you must
         // enable the flake8 plugin (see below), and you must disable the
         // pycodestyle plugin (see below).
-        "pyls.configurationSources": ["pycodestyle"],
+        "pylsp.configurationSources": ["pycodestyle"],
         // By default, pycodestyle is enabled
-        "pyls.plugins.pycodestyle.enabled": true,
-        "pyls.plugins.pydocstyle.enabled": false,
-        "pyls.plugins.pyflakes.enabled": false,
-        "pyls.plugins.pylint.enabled": false,
-        "pyls.plugins.flake8.enabled": false,
-        "pyls.plugins.pyls_mypy.enabled": false,
-        "pyls.plugins.pyls_mypy.live_mode": false,
+        "pylsp.plugins.pycodestyle.enabled": true,
+        "pylsp.plugins.pydocstyle.enabled": false,
+        "pylsp.plugins.pyflakes.enabled": false,
+        "pylsp.plugins.pylint.enabled": false,
+        "pylsp.plugins.flake8.enabled": false,
+        "pylsp.plugins.mypy-ls.enabled": false,
+        "pylsp.plugins.mypy-ls.live_mode": true,
+        "pylsp.plugins.mypy-ls.strict": false,
         // --- Formatters -----------------------------------------------------
         // By default, autopep8 is enabled
-        "pyls.plugins.autopep8.enabled": true,
-        "pyls.plugins.yapf.enabled": false,
-        "pyls.plugins.pyls_black.enabled": false,
-        "pyls.plugins.pyls_isort.enabled": false,
+        "pylsp.plugins.autopep8.enabled": true,
+        "pylsp.plugins.yapf.enabled": false,
+        "pylsp.plugins.pyls_black.enabled": false,
+        "pylsp.plugins.pyls_isort.enabled": false,
     },
 }
