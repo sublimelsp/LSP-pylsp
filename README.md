@@ -58,7 +58,7 @@ The default linter is `pycodestyle`. The possible linters are:
   `["pycodestyle"]`.
 - pyflakes (`"pylsp.plugins.pyflakes.enabled"` in the settings)
 - pylint (`"pylsp.plugins.pylint.enabled"` in the settings)
-- mypy (`"pylsp.plugins.pyls_mypy.enabled"` in the settings)
+- mypy_ls (`"pylsp.plugins.mypy-ls.enabled"` in the settings)
 
 After changing a linter, you must restart Sublime Text.
 
