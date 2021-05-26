@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Preferences: LSP-pylsp Settings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/LSP-pylsp/LSP-pylsp.sublime-settings",
+            "default": "// Settings in here override those in \"LSP-pylsp/LSP-pylsp.sublime-settings\"\n{\n\t$0\n}\n"
+        }
+    }
+]
