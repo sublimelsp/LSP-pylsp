@@ -49,6 +49,61 @@
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
+                    "pylsp.plugins.flake8.exclude": {
+                      "type": "array",
+                      "default": null,
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "description": "Exclude files or directories which match these patterns."
+                    },
+                    "pylsp.plugins.flake8.filename": {
+                      "type": "array",
+                      "default": null,
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "description": "When parsing directories, only check filenames matching these patterns."
+                    },
+                    "pylsp.plugins.flake8.hangClosing": {
+                      "type": "boolean",
+                      "default": null,
+                      "description": "Hang closing bracket instead of matching indentation of opening bracket's line."
+                    },
+                    "pylsp.plugins.flake8.ignore": {
+                      "type": "array",
+                      "default": null,
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "description": "Ignore errors and warnings."
+                    },
+                    "pylsp.plugins.flake8.maxLineLength": {
+                      "type": "number",
+                      "default": null,
+                      "description": "Set maximum allowed line length."
+                    },
+                    "pylsp.plugins.flake8.select": {
+                      "type": "array",
+                      "default": null,
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "description": "Select errors and warnings."
+                    },
+                    "pylsp.plugins.flake8.perFileIgnores": {
+                      "type": "array",
+                      "default": null,
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "markdownDescription": "Ignore errors and warnings per file.\n\nEach individual item should be in a format `file_path:error_code`. For example `\"project/__init__.py:F401\"`."
+                    },
                     "pylsp.plugins.jedi.extra_paths": {
                       "description": "Additional paths to extend the JEDI engine with.",
                       "type": "array",
@@ -182,7 +237,7 @@
                         "type": "string"
                       },
                       "uniqueItems": true,
-                      "description": "Select errors and warnings"
+                      "description": "Select errors and warnings."
                     },
                     "pylsp.plugins.pycodestyle.ignore": {
                       "type": "array",
@@ -191,7 +246,7 @@
                         "type": "string"
                       },
                       "uniqueItems": true,
-                      "description": "Ignore errors and warnings"
+                      "description": "Ignore errors and warnings."
                     },
                     "pylsp.plugins.pycodestyle.hangClosing": {
                       "type": "boolean",
@@ -202,6 +257,11 @@
                       "type": "number",
                       "default": null,
                       "description": "Set maximum allowed line length."
+                    },
+                    "pylsp.plugins.pycodestyle.aggressive": {
+                      "type": "number",
+                      "default": null,
+                      "markdownDescription": "Enable non-whitespace auto-fixes. Higher number results in more aggressive changes. For example, `E712` requires aggressiveness level 2 (since `x == True` could be changed to either `x` or `x is True`, but `autopep8` chooses the former). will also shorten lines more aggressively. Will also shorten the lines and remove trailing whitespace more aggressively."
                     },
                     "pylsp.plugins.pydocstyle.enabled": {
                       "type": "boolean",
@@ -242,7 +302,7 @@
                         "type": "string"
                       },
                       "uniqueItems": true,
-                      "description": "Ignore errors and warnings"
+                      "description": "Ignore errors and warnings."
                     },
                     "pylsp.plugins.pydocstyle.select": {
                       "type": "array",
@@ -251,7 +311,7 @@
                         "type": "string"
                       },
                       "uniqueItems": true,
-                      "description": "Select errors and warnings"
+                      "description": "Select errors and warnings."
                     },
                     "pylsp.plugins.pydocstyle.match": {
                       "type": "string",
