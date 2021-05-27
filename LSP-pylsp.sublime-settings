@@ -44,8 +44,7 @@
             "MYPY_PATH": "$sublime_py_files_dir:$packages"
         },
         // --- JEDI configuration ---------------------------------------------
-        // In vase you are using a virtual environment, specify a path to it for the
-        // server to run within the correct environment.
+        // If you are using a virtual environment, specify a path to it to here.
         // "pylsp.plugins.jedi.environment": "./.venv/myproject",
         "pylsp.plugins.jedi.extra_paths": [
             "$sublime_py_files_dir",
