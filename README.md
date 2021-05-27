@@ -8,6 +8,7 @@ To use this package, you must have:
 - An executable `python` (on Windows) or `python3` (on Linux/macOS)
 - The [LSP](https://packagecontrol.io/packages/LSP) package
 - For Ubuntu and Debian users, you must also install `python3-venv` with `apt`
+- It's recommended to also install the `LSP-json` package which will provide autocompletion and validation for this package's settings.
 
 ## Applicable Selectors
 
@@ -26,6 +27,20 @@ case, that means that when you open a view with the `source.python` base scope, 
 ## Configuration
 
 Configure the Python LSP Server by accessing `Preferences > Package Settings > LSP > Servers > LSP-pylsp`.
+
+### Virtual environments
+
+If your project needs to run and be validated within a virtual environment, point to it using the `pylsp.plugins.jedi.environment` settings. For example if your virtual environment lives in `.venv/myproject` within the the project directory then set it like so:
+
+```json
+{
+    "settings": {
+        "pylsp.plugins.jedi.environment": "./.venv/myproject",
+    }
+}
+```
+
+You can set it in `LSP-pylsp` global settings or (more likely) override it per project.
 
 ## Code Completion
 
