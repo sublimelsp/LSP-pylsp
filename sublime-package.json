@@ -34,7 +34,7 @@
                         "type": "string",
                         "enum": [
                           "pycodestyle",
-                          "pyflakes"
+                          "flake8"
                         ]
                       },
                       "uniqueItems": true
