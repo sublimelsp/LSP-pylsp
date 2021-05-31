@@ -35,14 +35,12 @@
     ],
     "env": {
         "PYTHONPATH": "$sublime_py_files_dir:$packages",
-        "MYPY_PATH": "$sublime_py_files_dir:$packages"
+        // Override MYPYPATH to extend the paths that mypy searches when looking for stub files.
+        // Alternatively create a mypy.ini configuration file at the root of the project with `mypy_path` option set.
+        // See https://mypy.readthedocs.io/en/stable/config_file.html?highlight=mypy_path#confval-mypy_path
+        "MYPYPATH": "$sublime_py_files_dir:$packages"
     },
     "settings": {
-        // --- env ------------------------------------------------------------
-        "pylsp.env": {
-            "PYTHONPATH": "$sublime_py_files_dir:$packages",
-            "MYPY_PATH": "$sublime_py_files_dir:$packages"
-        },
         // --- JEDI configuration ---------------------------------------------
         // If you are using a virtual environment, specify a path to it to here.
         // "pylsp.plugins.jedi.environment": "./.venv/myproject",

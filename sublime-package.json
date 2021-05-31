@@ -12,13 +12,6 @@
               "properties": {
                 "settings": {
                   "properties": {
-                    "pylsp.env": {
-                      "description": "Overrides for server environment variables.",
-                      "type": "object",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
                     "pylsp.executable": {
                       "type": "string",
                       "default": "pylsp",
