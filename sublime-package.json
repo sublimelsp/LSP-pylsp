@@ -356,17 +356,17 @@
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
-                    "pylsp.plugins.mypy_ls.enabled": {
+                    "pylsp.plugins.mypy-ls.enabled": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
-                    "pylsp.plugins.mypy_ls.live_mode": {
+                    "pylsp.plugins.mypy-ls.live_mode": {
                       "type": "boolean",
                       "default": true,
                       "markdownDescription": "Provide type checking as you type. This writes to a tempfile every time a check is done. Turning off `live_mode` means you must save your changes for mypy diagnostics to update correctly."
                     },
-                    "pylsp.plugins.mypy_ls.strict": {
+                    "pylsp.plugins.mypy-ls.strict": {
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Refers to the `strict` option of `mypy`. This option often is too strict to be useful."
