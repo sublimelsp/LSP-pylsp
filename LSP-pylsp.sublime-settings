@@ -78,6 +78,5 @@
         "pylsp.plugins.yapf.enabled": false,
         "pylsp.plugins.pyls_isort.enabled": false,
         "pylsp.plugins.pylsp_black.enabled": false,
-        "pylsp.plugins.pylsp_isort.enabled": false,
     },
 }
