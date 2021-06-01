@@ -83,7 +83,7 @@ The default formatter is `autopep8`. The possible formatters are:
 
 - yapf (`"pylsp.plugins.yapf.enabled"` in the settings)
 - autopep8 (`"pylsp.plugins.autopep8.enabled"` in the settings)
-- black (`"pylsp.plugins.pyls_black.enabled"` in the settings)
+- black (`"pylsp.plugins.pylsp_black.enabled"` in the settings)
 
 After changing a formatter, you must restart Sublime Text.
 
