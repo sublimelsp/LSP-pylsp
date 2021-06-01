@@ -346,12 +346,12 @@
                       "type": "string",
                       "description": "Executable to run pylint with. Setting this will run pylint on unsaved files via stdin. Can slow down workflow. Only works with python3."
                     },
-                    "pylsp.plugins.pyls_black.enabled": {
+                    "pylsp.plugins.pylsp_black.enabled": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
-                    "pylsp.plugins.pyls_isort.enabled": {
+                    "pylsp.plugins.pylsp_isort.enabled": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable the plugin."
