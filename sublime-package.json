@@ -349,7 +349,7 @@
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
-                    "pylsp.plugins.mypy-ls.enabled": {
+                    "pylsp.plugins.mypy_ls.enabled": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable the plugin."
