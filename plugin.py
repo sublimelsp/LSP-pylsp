@@ -10,10 +10,6 @@ class Pylsp(PipClientHandler):
     server_filename = "pylsp"
 
     @classmethod
-    def get_displayed_name(cls) -> str:
-        return "pylsp"
-
-    @classmethod
     def get_additional_variables(cls) -> Dict[str, str]:
         variables = super().get_additional_variables()
         variables.update(
