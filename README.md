@@ -34,8 +34,18 @@ If your project needs to run and be validated within a virtual environment, poin
 
 ```json
 {
-    "settings": {
-        "pylsp.plugins.jedi.environment": "./.venv/myproject",
+    "settings":
+    {
+        "LSP":
+        {
+            "LSP-pylsp":
+            {
+                "settings":
+                {
+                    "pylsp.plugins.jedi.environment": "./.venv/myproject"
+                }
+            }
+        }
     }
 }
 ```
