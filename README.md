@@ -32,7 +32,7 @@ Configure the Python LSP Server by accessing `Preferences > Package Settings > L
 
 If your project needs to run and be validated within a virtual environment, point to the environment using the `pylsp.plugins.jedi.environment` setting. For example if your virtual environment lives in `.venv/myproject` within the the project directory then run `Project: Edit Project` from the Command Palette and add the setting like so:
 
-```json
+```jsonc
 {
     // "folders": [
     //     ...
