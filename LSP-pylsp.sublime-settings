@@ -68,6 +68,7 @@
         "pylsp.plugins.pylint.enabled": false,
         "pylsp.plugins.flake8.enabled": false,
         "pylsp.plugins.mypy_ls.enabled": false,
+        "pylsp.plugins.mypy-ls.dmypy": false,
         "pylsp.plugins.mypy-ls.live_mode": true,
         "pylsp.plugins.mypy-ls.strict": false,
         // --- Formatters -----------------------------------------------------
