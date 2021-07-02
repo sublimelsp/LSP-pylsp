@@ -26,7 +26,7 @@ case, that means that when you open a view with the `source.python` base scope, 
 
 ## Running alongside LSP-pyright
 
-[`LSP-pyright`](https://packagecontrol.io/packages/LSP-pyright) is a more modern, faster and actively supported alternative to `LSP-pylsp`. While it's arguably much better solution for validating the code and type-checking, it doesn't support linters or code formatters like `flake8`, `pyflakes`, `pydocstyle`, `yapf` or `black`. The solution to that could be to run them alongside each other, with code checking features disabled in `LSP-pylsp`. To achieve that, open `Preferences: LSP-pylsp Settings` from the _Command Palette_ and add the following user settings:
+[`LSP-pyright`](https://packagecontrol.io/packages/LSP-pyright) is a more modern, faster and actively supported alternative to `LSP-pylsp`. While it's arguably much better solution for validating the code and type-checking, it doesn't support linters or code formatters like `flake8`, `pyflakes`, `pydocstyle`, `yapf` or `black`. The solution to that could be to run them alongside each other with code checking features disabled in `LSP-pylsp`. To achieve that, open `Preferences: LSP-pylsp Settings` from the _Command Palette_ and add the following user settings:
 
 ```js
 {
