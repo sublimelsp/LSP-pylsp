@@ -349,22 +349,22 @@
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
-                    "pylsp.plugins.mypy_ls.enabled": {
+                    "pylsp.plugins.pylsp_mypy.enabled": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable the plugin."
                     },
-                    "pylsp.plugins.mypy-ls.dmypy": {
+                    "pylsp.plugins.pylsp_mypy.dmypy": {
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Execute via `dmypy run` rather than `mypy`. This uses the `dmypy` daemon and may dramatically improve the responsiveness of the `pylsp` server, however this currently does not work in `live_mode`. Enabling this disables `live_mode`, even for conflicting configs."
                     },
-                    "pylsp.plugins.mypy-ls.live_mode": {
+                    "pylsp.plugins.pylsp_mypy.live_mode": {
                       "type": "boolean",
                       "default": true,
                       "markdownDescription": "Provide type checking as you type. This writes to a tempfile every time a check is done. Turning off `live_mode` means you must save your changes for mypy diagnostics to update correctly."
                     },
-                    "pylsp.plugins.mypy-ls.strict": {
+                    "pylsp.plugins.pylsp_mypy.strict": {
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Refers to the `strict` option of `mypy`. This option often is too strict to be useful."

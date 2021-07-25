@@ -67,10 +67,10 @@
         "pylsp.plugins.pyflakes.enabled": false,
         "pylsp.plugins.pylint.enabled": false,
         "pylsp.plugins.flake8.enabled": false,
-        "pylsp.plugins.mypy_ls.enabled": false,
-        "pylsp.plugins.mypy-ls.dmypy": false,
-        "pylsp.plugins.mypy-ls.live_mode": true,
-        "pylsp.plugins.mypy-ls.strict": false,
+        "pylsp.plugins.pylsp_mypy.enabled": false,
+        "pylsp.plugins.pylsp_mypy.dmypy": false,
+        "pylsp.plugins.pylsp_mypy.live_mode": true,
+        "pylsp.plugins.pylsp_mypy.strict": false,
         // --- Formatters -----------------------------------------------------
         // By default, autopep8 is enabled
         "pylsp.plugins.autopep8.enabled": true,
