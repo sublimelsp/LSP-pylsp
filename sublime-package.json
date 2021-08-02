@@ -95,7 +95,17 @@
                         "type": "string"
                       },
                       "uniqueItems": true,
-                      "markdownDescription": "Ignore errors and warnings per file.\n\nEach individual item should be in a format `file_path:error_code`. For example `\"project/__init__.py:F401\"`."
+                      "markdownDescription": "Ignore errors and warnings per file.\n\nEach individual item should be in a format `file_path:error_code`. For example `\"project/__init__.py:W305,W304\"`."
+                    },
+                    "pylsp.plugins.flake8.config": {
+                      "type": "string",
+                      "default": null,
+                      "description": "Path to the config file that will be the authoritative config source."
+                    },
+                    "pylsp.plugins.flake8.executable": {
+                      "type": "string",
+                      "default": "flake8",
+                      "description": "Path to the flake8 executable."
                     },
                     "pylsp.plugins.jedi.extra_paths": {
                       "description": "Additional paths to extend the JEDI engine with.",
@@ -136,6 +146,24 @@
                       "default": true,
                       "description": "Enable fuzzy when requesting autocomplete."
                     },
+                    "pylsp.plugins.jedi_completion.eager": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Resolve documentation and detail eagerly."
+                    },
+                    "pylsp.plugins.jedi_completion.resolve_at_most_labels": {
+                      "type": "number",
+                      "default": 25,
+                      "description": "How many labels (at most) should be resolved?"
+                    },
+                    "pylsp.plugins.jedi_completion.cache_labels_for": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": ["pandas", "numpy", "tensorflow", "matplotlib"],
+                      "description": "Modules for which the labels should be cached."
+                    },
                     "pylsp.plugins.jedi_definition.enabled": {
                       "type": "boolean",
                       "default": true,
@@ -175,6 +203,11 @@
                       "type": "boolean",
                       "default": true,
                       "description": "If True lists the names of all scopes instead of only the module namespace."
+                    },
+                    "pylsp.plugins.jedi_symbols.include_import_symbols": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "If True includes symbols imported from other libraries."
                     },
                     "pylsp.plugins.mccabe.enabled": {
                       "type": "boolean",
@@ -373,6 +406,11 @@
                       "type": "boolean",
                       "default": true,
                       "description": "Enable or disable the plugin."
+                    },
+                    "pylsp.plugins.rope_completion.eager": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Resolve documentation and detail eagerly."
                     },
                     "pylsp.plugins.yapf.enabled": {
                       "type": "boolean",
