@@ -98,14 +98,15 @@
         // change "pylsp.configurationSources" to ["flake8"], and you must
         // enable the flake8 plugin (see below), and you must disable the
         // pycodestyle plugin (see below).
-        "pylsp.configurationSources": ["pycodestyle"],
         // By default, pycodestyle is enabled
+        "pylsp.configurationSources": ["pycodestyle"],
+        "pylsp.plugins.flake8.enabled": false,
         "pylsp.plugins.pycodestyle.enabled": true,
         "pylsp.plugins.pydocstyle.enabled": false,
         "pylsp.plugins.pyflakes.enabled": false,
         "pylsp.plugins.pylint.enabled": false,
         "pylsp.plugins.pylsp_mypy.enabled": false,
-        "pylsp.plugins.flake8.enabled": false,
+        // --- flake8 settings ---
         // Path to the config file that will be the authoritative config source.
         "pylsp.plugins.flake8.config": null,
         // Exclude files or directories which match these patterns.
@@ -125,14 +126,17 @@
         "pylsp.plugins.flake8.perFileIgnores": null,
         // Select errors and warnings.
         "pylsp.plugins.flake8.select": null,
+        // --- mccabe settings ---
         // Enable or disable the plugin.
         "pylsp.plugins.mccabe.enabled": true,
         // The minimum threshold that triggers warnings about cyclomatic complexity.
         "pylsp.plugins.mccabe.threshold": 15,
+        // --- preload settings ---
         // Enable or disable the plugin.
         "pylsp.plugins.preload.enabled": true,
         // List of modules to import on startup
         "pylsp.plugins.preload.modules": null,
+        // --- pycodestyle settings ---
         // Enable non-whitespace auto-fixes. Higher number results in more aggressive changes. For example, `E712`
         // requires aggressiveness level 2 (since `x == True` could be changed to either `x` or `x is True`, but
         // `autopep8` chooses the former). will also shorten lines more aggressively. Will also shorten the lines and
@@ -150,6 +154,7 @@
         "pylsp.plugins.pycodestyle.maxLineLength": null,
         // Select errors and warnings.
         "pylsp.plugins.pycodestyle.select": null,
+        // --- pydocstyle settings ---
         // Ignore errors and warnings in addition to the specified convention.
         "pylsp.plugins.pydocstyle.addIgnore": null,
         // Select errors and warnings in addition to the specified convention.
@@ -167,11 +172,13 @@
         "pylsp.plugins.pydocstyle.matchDir": "[^\\.].*",
         // Select errors and warnings.
         "pylsp.plugins.pydocstyle.select": null,
+        // --- pylint settings ---
         // Arguments to pass to pylint.
         "pylsp.plugins.pylint.args": null,
         // Executable to run pylint with. Setting this will run pylint on unsaved files via stdin. Can slow down
         // workflow. Only works with python3.
         "pylsp.plugins.pylint.executable": "",
+        // --- pylsp_mypy settings ---
         // Execute via `dmypy run` rather than `mypy`. This uses the `dmypy` daemon and may dramatically improve the
         // responsiveness of the `pylsp` server, however this currently does not work in `live_mode`. Enabling this
         // disables `live_mode`, even for conflicting configs.
@@ -181,6 +188,7 @@
         "pylsp.plugins.pylsp_mypy.live_mode": true,
         // Refers to the `strict` option of `mypy`. This option often is too strict to be useful.
         "pylsp.plugins.pylsp_mypy.strict": false,
+        // --- rope_completion settings ---
         // Resolve documentation and detail eagerly.
         "pylsp.plugins.rope_completion.eager": false,
         // Enable or disable the plugin.
