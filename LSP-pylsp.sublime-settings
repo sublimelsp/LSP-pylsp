@@ -42,14 +42,52 @@
     },
     "settings": {
         // --- JEDI configuration ---------------------------------------------
+        // Define environment variables for jedi.Script and Jedi.names.
+        "pylsp.plugins.jedi.env_vars": {},
+        // Define environment for jedi.Script and Jedi.names.
+        "pylsp.plugins.jedi.environment": null,
+        // Additional paths to extend the JEDI engine with.
         // If you are using a virtual environment, specify a path to it to here.
         // "pylsp.plugins.jedi.environment": "./.venv/myproject",
-        "pylsp.plugins.jedi.extra_paths": [
-            "$sublime_py_files_dir",
-            "$packages"
-        ],
+        "pylsp.plugins.jedi.extra_paths": ["$sublime_py_files_dir", "$packages"],
+        // Enable or disable the plugin.
         "pylsp.plugins.jedi_completion.enabled": true,
+        // Modules for which the labels should be cached.
+        "pylsp.plugins.jedi_completion.cache_labels_for": ["pandas", "numpy", "tensorflow", "matplotlib"],
+        // Resolve documentation and detail eagerly.
+        "pylsp.plugins.jedi_completion.eager": false,
+        // Enable fuzzy when requesting autocomplete.
         "pylsp.plugins.jedi_completion.fuzzy": true,
+        // Adds class objects as a separate completion item.
+        "pylsp.plugins.jedi_completion.include_class_objects": true,
+        // Auto-completes methods and classes with tabstops for each parameter.
+        "pylsp.plugins.jedi_completion.include_params": true,
+        // How many labels (at most) should be resolved?
+        "pylsp.plugins.jedi_completion.resolve_at_most_labels": 25,
+        // Enable or disable the plugin.
+        "pylsp.plugins.jedi_definition.enabled": true,
+        // If follow_imports is True will decide if it follow builtin imports.
+        "pylsp.plugins.jedi_definition.follow_builtin_imports": true,
+        // The goto call will follow imports.
+        "pylsp.plugins.jedi_definition.follow_imports": true,
+        // Enable or disable the plugin.
+        "pylsp.plugins.jedi_hover.enabled": true,
+        // Enable or disable the plugin.
+        "pylsp.plugins.jedi_references.enabled": true,
+        // Enable or disable the plugin.
+        "pylsp.plugins.jedi_signature_help.enabled": true,
+        // If True lists the names of all scopes instead of only the module namespace.
+        "pylsp.plugins.jedi_symbols.all_scopes": true,
+        // Enable or disable the plugin.
+        "pylsp.plugins.jedi_symbols.enabled": true,
+        // If True includes symbols imported from other libraries.
+        "pylsp.plugins.jedi_symbols.include_import_symbols": true,
+        // Builtin and c-extension modules that are allowed to be imported and inspected by rope.
+        "pylsp.rope.extensionModules": null,
+        // The name of the folder in which rope stores project configurations and data.  Pass `null` for not using such
+        // a folder at all.
+        "pylsp.rope.ropeFolder": null,
+
         // --- Linters --------------------------------------------------------
         // Configuration is computed first from user configuration (in home directory),
         // overridden by configuration passed in by the language client,
@@ -66,11 +104,88 @@
         "pylsp.plugins.pydocstyle.enabled": false,
         "pylsp.plugins.pyflakes.enabled": false,
         "pylsp.plugins.pylint.enabled": false,
-        "pylsp.plugins.flake8.enabled": false,
         "pylsp.plugins.pylsp_mypy.enabled": false,
+        "pylsp.plugins.flake8.enabled": false,
+        // Path to the config file that will be the authoritative config source.
+        "pylsp.plugins.flake8.config": null,
+        // Exclude files or directories which match these patterns.
+        "pylsp.plugins.flake8.exclude": null,
+        // Path to the flake8 executable.
+        "pylsp.plugins.flake8.executable": "flake8",
+        // When parsing directories, only check filenames matching these patterns.
+        "pylsp.plugins.flake8.filename": null,
+        // Hang closing bracket instead of matching indentation of opening bracket's line.
+        "pylsp.plugins.flake8.hangClosing": null,
+        // Ignore errors and warnings.
+        "pylsp.plugins.flake8.ignore": null,
+        // Set maximum allowed line length.
+        "pylsp.plugins.flake8.maxLineLength": null,
+        // Ignore errors and warnings per file.
+        // Each individual item should be in a format `file_path:error_code`. For example `"project/__init__.py:W305,W304"`.
+        "pylsp.plugins.flake8.perFileIgnores": null,
+        // Select errors and warnings.
+        "pylsp.plugins.flake8.select": null,
+        // Enable or disable the plugin.
+        "pylsp.plugins.mccabe.enabled": true,
+        // The minimum threshold that triggers warnings about cyclomatic complexity.
+        "pylsp.plugins.mccabe.threshold": 15,
+        // Enable or disable the plugin.
+        "pylsp.plugins.preload.enabled": true,
+        // List of modules to import on startup
+        "pylsp.plugins.preload.modules": null,
+        // Enable non-whitespace auto-fixes. Higher number results in more aggressive changes. For example, `E712`
+        // requires aggressiveness level 2 (since `x == True` could be changed to either `x` or `x is True`, but
+        // `autopep8` chooses the former). will also shorten lines more aggressively. Will also shorten the lines and
+        // remove trailing whitespace more aggressively.
+        "pylsp.plugins.pycodestyle.aggressive": null,
+        // Exclude files or directories which match these patterns.
+        "pylsp.plugins.pycodestyle.exclude": null,
+        // When parsing directories, only check filenames matching these patterns.
+        "pylsp.plugins.pycodestyle.filename": null,
+        // Hang closing bracket instead of matching indentation of opening bracket's line.
+        "pylsp.plugins.pycodestyle.hangClosing": null,
+        // Ignore errors and warnings.
+        "pylsp.plugins.pycodestyle.ignore": null,
+        // Set maximum allowed line length.
+        "pylsp.plugins.pycodestyle.maxLineLength": null,
+        // Select errors and warnings.
+        "pylsp.plugins.pycodestyle.select": null,
+        // Ignore errors and warnings in addition to the specified convention.
+        "pylsp.plugins.pydocstyle.addIgnore": null,
+        // Select errors and warnings in addition to the specified convention.
+        "pylsp.plugins.pydocstyle.addSelect": null,
+        // Choose the basic list of checked errors by specifying an existing convention.
+        // possible values: pep257, numpy
+        "pylsp.plugins.pydocstyle.convention": null,
+        // Ignore errors and warnings.
+        "pylsp.plugins.pydocstyle.ignore": null,
+        // Check only files that exactly match the given regular expression; default is to match files that don't start
+        // with 'test_' but end with '.py'.
+        "pylsp.plugins.pydocstyle.match": "(?!test_).*\\.py",
+        // Search only dirs that exactly match the given regular expression; default is to match dirs which do not begin
+        // with a dot.
+        "pylsp.plugins.pydocstyle.matchDir": "[^\\.].*",
+        // Select errors and warnings.
+        "pylsp.plugins.pydocstyle.select": null,
+        // Arguments to pass to pylint.
+        "pylsp.plugins.pylint.args": null,
+        // Executable to run pylint with. Setting this will run pylint on unsaved files via stdin. Can slow down
+        // workflow. Only works with python3.
+        "pylsp.plugins.pylint.executable": "",
+        // Execute via `dmypy run` rather than `mypy`. This uses the `dmypy` daemon and may dramatically improve the
+        // responsiveness of the `pylsp` server, however this currently does not work in `live_mode`. Enabling this
+        // disables `live_mode`, even for conflicting configs.
         "pylsp.plugins.pylsp_mypy.dmypy": false,
+        // Provide type checking as you type. This writes to a tempfile every time a check is done. Turning off
+        // `live_mode` means you must save your changes for mypy diagnostics to update correctly.
         "pylsp.plugins.pylsp_mypy.live_mode": true,
+        // Refers to the `strict` option of `mypy`. This option often is too strict to be useful.
         "pylsp.plugins.pylsp_mypy.strict": false,
+        // Resolve documentation and detail eagerly.
+        "pylsp.plugins.rope_completion.eager": false,
+        // Enable or disable the plugin.
+        "pylsp.plugins.rope_completion.enabled": true,
+
         // --- Formatters -----------------------------------------------------
         // By default, autopep8 is enabled
         "pylsp.plugins.autopep8.enabled": true,
