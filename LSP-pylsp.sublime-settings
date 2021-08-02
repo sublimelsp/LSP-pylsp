@@ -42,14 +42,14 @@
     },
     "settings": {
         // --- JEDI configuration ---------------------------------------------
-        // Define environment variables for jedi.Script and Jedi.names.
-        "pylsp.plugins.jedi.env_vars": {},
-        // Define environment for jedi.Script and Jedi.names.
-        "pylsp.plugins.jedi.environment": null,
         // Additional paths to extend the JEDI engine with.
         // If you are using a virtual environment, specify a path to it to here.
         // "pylsp.plugins.jedi.environment": "./.venv/myproject",
         "pylsp.plugins.jedi.extra_paths": ["$sublime_py_files_dir", "$packages"],
+        // Define environment variables for jedi.Script and Jedi.names.
+        "pylsp.plugins.jedi.env_vars": {},
+        // Define environment for jedi.Script and Jedi.names.
+        "pylsp.plugins.jedi.environment": null,
         // Enable or disable the plugin.
         "pylsp.plugins.jedi_completion.enabled": true,
         // Modules for which the labels should be cached.
