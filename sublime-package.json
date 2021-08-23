@@ -139,8 +139,13 @@
                       }
                     },
                     "pylsp.plugins.jedi.env_vars": {
-                      "type": "object",
-                      "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "default": null,
+                      "minProperties": 1,
+                      "additionalProperties": {
                         "type": "string"
                       },
                       "description": "Define environment variables for jedi.Script and Jedi.names."
