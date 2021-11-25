@@ -52,7 +52,7 @@
         // Enable or disable the plugin.
         "pylsp.plugins.jedi_completion.enabled": true,
         // Modules for which the labels should be cached.
-        "pylsp.plugins.jedi_completion.cache_labels_for": ["pandas", "numpy", "tensorflow", "matplotlib"],
+        "pylsp.plugins.jedi_completion.cache_for": ["pandas", "numpy", "tensorflow", "matplotlib"],
         // Resolve documentation and detail eagerly.
         "pylsp.plugins.jedi_completion.eager": false,
         // Enable fuzzy when requesting autocomplete.
@@ -62,7 +62,7 @@
         // Auto-completes methods and classes with tabstops for each parameter.
         "pylsp.plugins.jedi_completion.include_params": true,
         // How many labels (at most) should be resolved?
-        "pylsp.plugins.jedi_completion.resolve_at_most_labels": 25,
+        "pylsp.plugins.jedi_completion.resolve_at_most": 25,
         // Enable or disable the plugin.
         "pylsp.plugins.jedi_definition.enabled": true,
         // If follow_imports is True will decide if it follow builtin imports.
