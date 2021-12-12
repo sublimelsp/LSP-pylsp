@@ -23,16 +23,6 @@
 // $DATA/Packages/User/LSP-pylsp.sublime-settings.
 {
     "command": ["$server_path"],
-    // ST4
-    "selector": "source.python",
-    // ST3
-    "languages": [
-        {
-            "languageId": "python",
-            "scopes": ["source.python"],
-            "syntaxes": ["Packages/Python/Python.sublime-syntax"],
-        }
-    ],
     "env": {
         "PYTHONPATH": "${sublime_py_files_dir}${pathsep}${packages}",
         // Override MYPYPATH to extend the paths that mypy searches when looking for stub files.
@@ -200,4 +190,14 @@
         "pylsp.plugins.pyls_isort.enabled": false,
         "pylsp.plugins.pylsp_black.enabled": false,
     },
+    // ST4
+    "selector": "source.python",
+    // ST3
+    "languages": [
+        {
+            "languageId": "python",
+            "scopes": ["source.python"],
+            "syntaxes": ["Packages/Python/Python.sublime-syntax"],
+        }
+    ],
 }
