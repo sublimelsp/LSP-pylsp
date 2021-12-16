@@ -1,4 +1,4 @@
-python-lsp-server[all]==1.3.2
+python-lsp-server[all]==1.3.3
 python-lsp-black==1.0.1
 pyls-isort==0.2.2
 pylsp-mypy==0.5.4
