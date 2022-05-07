@@ -14,8 +14,7 @@
 // {
 //     "settings":
 //     {
-//         "pylsp.plugins.autopep8.enabled": false,
-//         "pylsp.plugins.pylsp_black.enabled": true
+//         "pylsp.plugins.black.enabled": true
 //     }
 // }
 //
@@ -188,7 +187,11 @@
         "pylsp.plugins.autopep8.enabled": true,
         "pylsp.plugins.yapf.enabled": false,
         "pylsp.plugins.pyls_isort.enabled": false,
-        "pylsp.plugins.pylsp_black.enabled": false,
+        // Enabling black disables the autopep8 and yapf plugins.
+        "pylsp.plugins.black.enabled": false,
+        "pylsp.plugins.black.cache_config": false,
+        "pylsp.plugins.black.line_length": 88,
+        "pylsp.plugins.black.preview": false,
     },
     // ST4
     "selector": "source.python",
