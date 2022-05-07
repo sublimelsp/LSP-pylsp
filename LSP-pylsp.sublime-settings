@@ -180,7 +180,7 @@
         // Resolve documentation and detail eagerly.
         "pylsp.plugins.rope_completion.eager": false,
         // Enable or disable the plugin.
-        "pylsp.plugins.rope_completion.enabled": true,
+        "pylsp.plugins.rope_completion.enabled": false,
 
         // --- Formatters -----------------------------------------------------
         // By default, autopep8 is enabled
