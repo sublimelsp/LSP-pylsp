@@ -457,22 +457,22 @@
                       "type": "string",
                       "description": "Executable to run pylint with. Setting this will run pylint on unsaved files via stdin. Can slow down workflow. Only works with python3."
                     },
-                    "pylsp.plugins.black.enabled": {
+                    "pylsp.plugins.pylsp_black.enabled": {
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Enable or disable the plugin.\n\nEnabling `black` disables the `autopep8` and `yapf` plugins."
                     },
-                    "pylsp.plugins.black.cache_config": {
+                    "pylsp.plugins.pylsp_black.cache_config": {
                       "type": "boolean",
                       "default": false,
                       "description": "Enable or disable black configuration caching.\n\nImproves performance of the plugin. When configuration caching is enabled, any changes to black's configuration will need the LSP server to be restarted."
                     },
-                    "pylsp.plugins.black.line_length": {
+                    "pylsp.plugins.pylsp_black.line_length": {
                       "type": "integer",
                       "default": 88,
                       "markdownDescription": "Maps to [black's max-line-length](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length) setting."
                     },
-                    "pylsp.plugins.black.preview": {
+                    "pylsp.plugins.pylsp_black.preview": {
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Enable or disable [black's --preview setting](https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html#preview-style)."
