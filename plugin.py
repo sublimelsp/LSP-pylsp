@@ -20,7 +20,7 @@ class Pylsp(PipClientHandler):
     @classmethod
     def install_or_update(cls) -> None:
         super().install_or_update()
-        # Copy resources
+        # Copy stubs
         src = 'Packages/{}/stubs/'.format(cls.package_name)
         dest = os.path.join(cls.package_storage(), 'stubs')
         ResourcePath(src).copytree(dest, exist_ok=True)
