@@ -23,8 +23,10 @@
 {
     "command": ["$server_path"],
     "env": {
-        // NOTE: User-defined "env" overrides all properties defined here rather than merging them.
-        "PYTHONPATH": "${sublime_stubs_dir}",
+        // Paths seem to have to be specified in two places so that both Jedi and Mypy can pick up types and stubs.
+        // NOTE: User overrides for "env" are not merged with default ones so override both, if needed.
+        "PYTHONPATH": "${sublime_stubs_dir}${pathsep}${packages}",
+        "MYPYPATH": "${sublime_stubs_dir}${pathsep}${packages}"
     },
     "settings": {
         // --- JEDI configuration ---------------------------------------------
