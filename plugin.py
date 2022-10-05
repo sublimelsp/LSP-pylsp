@@ -1,7 +1,7 @@
 from LSP.plugin.core.typing import Dict
 from lsp_utils.pip_client_handler import PipClientHandler
-from sublime_lib import ResourcePath
 import os
+import sublime
 
 
 class Pylsp(PipClientHandler):
@@ -13,17 +13,9 @@ class Pylsp(PipClientHandler):
     def get_additional_variables(cls) -> Dict[str, str]:
         variables = super().get_additional_variables()
         variables.update({
-            "sublime_stubs_dir": os.path.join(cls.package_storage(), 'stubs', 'sublime_text'),
+            "sublime_py_files_dir": os.path.dirname(sublime.__file__),
         })
         return variables
-
-    @classmethod
-    def install_or_update(cls) -> None:
-        super().install_or_update()
-        # Copy stubs
-        src = 'Packages/{}/stubs/'.format(cls.package_name)
-        dest = os.path.join(cls.package_storage(), 'stubs')
-        ResourcePath(src).copytree(dest, exist_ok=True)
 
 
 def plugin_loaded() -> None:
