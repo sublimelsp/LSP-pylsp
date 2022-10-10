@@ -1,3 +1,6 @@
 [tool.black]
 line-length = 120
 target-version = ['py33']
+
+[tool.pyright]
+pythonVersion = '3.11'
