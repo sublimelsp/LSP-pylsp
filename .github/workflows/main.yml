@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      - run: pip3 install mypy==0.971 flake8==5.0.4 yapf==0.31.0 --user
+      - run: pip3 install tox --user
       - run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-      - run: mypy .
-      - run: flake8 .
+      - run: tox
