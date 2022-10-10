@@ -12,11 +12,9 @@ class Pylsp(PipClientHandler):
     @classmethod
     def get_additional_variables(cls) -> Dict[str, str]:
         variables = super().get_additional_variables()
-        variables.update(
-            {
-                "sublime_py_files_dir": os.path.dirname(sublime.__file__),
-            }
-        )
+        variables.update({
+            "sublime_py_files_dir": os.path.dirname(sublime.__file__),
+        })
         return variables
 
 

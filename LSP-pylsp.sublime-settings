@@ -23,10 +23,12 @@
 {
     "command": ["$server_path"],
     "env": {
-        "PYTHONPATH": "${sublime_py_files_dir}${pathsep}${packages}",
-        // Override MYPYPATH to extend the paths that mypy searches when looking for stub files.
+        // Override PYTHONPATH and MYPYPATH to extend the paths that jedi and mypy searches when looking for stub files.
+        // Paths have to be specified in two places so that both Jedi and Mypy can pick up types and stubs.
         // Alternatively create a mypy.ini configuration file at the root of the project with `mypy_path` option set.
         // See https://mypy.readthedocs.io/en/stable/config_file.html?highlight=mypy_path#confval-mypy_path
+        // NOTE: User overrides for "env" are not merged with default ones so override both, if needed.
+        "PYTHONPATH": "${sublime_py_files_dir}${pathsep}${packages}",
         "MYPYPATH": "${sublime_py_files_dir}${pathsep}${packages}"
     },
     "settings": {

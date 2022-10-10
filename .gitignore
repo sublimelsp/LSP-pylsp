@@ -1,0 +1,7 @@
+.mypy_cache
+.pytest_cache
+.tox
+.ropeproject
+*.pyc
+.coverage
+mypycov
