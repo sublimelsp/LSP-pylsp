@@ -40,6 +40,8 @@
         "pylsp.plugins.jedi.environment": null,
         // Define environment variables for jedi.Script and Jedi.names.
         "pylsp.plugins.jedi.env_vars": null,
+        // List of module names for jedi.settings.auto_import_modules.
+        "pylsp.plugins.jedi.auto_import_modules": ["numpy"],
         // Enable or disable the plugin.
         "pylsp.plugins.jedi_completion.enabled": true,
         // Modules for which the labels should be cached.
@@ -49,7 +51,9 @@
         // Enable fuzzy when requesting autocomplete.
         "pylsp.plugins.jedi_completion.fuzzy": true,
         // Adds class objects as a separate completion item.
-        "pylsp.plugins.jedi_completion.include_class_objects": true,
+        "pylsp.plugins.jedi_completion.include_class_objects": false,
+        // Adds function objects as a separate completion item.
+        "pylsp.plugins.jedi_completion.include_function_objects": false,
         // Auto-completes methods and classes with tabstops for each parameter.
         "pylsp.plugins.jedi_completion.include_params": true,
         // How many labels (at most) should be resolved?
