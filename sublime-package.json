@@ -84,7 +84,15 @@
                         "type": "string"
                       },
                       "uniqueItems": true,
-                      "description": "Ignore errors and warnings."
+                      "description": "List of errors and warnings to ignore (or skip)."
+                    },
+                    "pylsp.plugins.flake8.maxComplexity": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "default": null,
+                      "description": "Maximum allowed complexity threshold."
                     },
                     "pylsp.plugins.flake8.maxLineLength": {
                       "type": [
@@ -228,6 +236,11 @@
                       "type": "boolean",
                       "default": true,
                       "description": "If follow_imports is True will decide if it follow builtin imports."
+                    },
+                    "pylsp.plugins.jedi_definition.follow_builtin_definitions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Follow builtin and extension definitions to stubs."
                     },
                     "pylsp.plugins.jedi_hover.enabled": {
                       "type": "boolean",
@@ -382,6 +395,7 @@
                       "enum": [
                         "pep257",
                         "numpy",
+                        "google",
                         null
                       ],
                       "description": "Choose the basic list of checked errors by specifying an existing convention."
@@ -470,6 +484,16 @@
                       "type": "string",
                       "description": "Executable to run pylint with. Setting this will run pylint on unsaved files via stdin. Can slow down workflow. Only works with python3."
                     },
+                    "pylsp.plugins.rope_autoimport.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Enable or disable autoimport."
+                    },
+                    "pylsp.plugins.rope_autoimport.memory": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Make the autoimport database memory only. Drastically increases startup time."
+                    },
                     "pylsp.plugins.pylsp_black.enabled": {
                       "type": "boolean",
                       "default": false,
@@ -505,6 +529,11 @@
                       "default": false,
                       "markdownDescription": "Execute via `dmypy run` rather than `mypy`. This uses the `dmypy` daemon and may dramatically improve the responsiveness of the `pylsp` server, however this currently does not work in `live_mode`. Enabling this disables `live_mode`, even for conflicting configs."
                     },
+                    "pylsp.plugins.pylsp_mypy.dmypy_status_file": {
+                      "type": "string",
+                      "default": ".dmypy.json",
+                      "markdownDescription": "Specifies which status file dmypy should use. This modifies the `--status-file` option passed to `dmypy` given `pylsp.plugins.pylsp_mypy.dmypy` is enabled."
+                    },
                     "pylsp.plugins.pylsp_mypy.live_mode": {
                       "type": "boolean",
                       "default": true,
@@ -514,6 +543,27 @@
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Refers to the `strict` option of `mypy`. This option often is too strict to be useful."
+                    },
+                    "pylsp.plugins.pylsp_mypy.overrides": {
+                      "type": "array",
+                      "items": {
+                        "type": ["boolean", "string"]
+                      },
+                      "default": [true],
+                      "markdownDescription": "Specifies a list of alternate or supplemental command-line options.\n\nThis modifies the options passed to `mypy` or the mypy-specific ones passed to `dmypy run`. When present, the special boolean member `true` is replaced with the command-line options that would've been passed had `overrides` not been specified. Later options take precedence, which allows for replacing or negating individual default options (see `mypy --help | grep inverse`)."
+                    },
+                    "pylsp.plugins.pylsp_mypy.config_sub_paths": {
+                      "type": "array",
+                      "items": {
+                        "type": ["string"]
+                      },
+                      "default": [],
+                      "markdownDescription": "Specifies sub paths under which the mypy configuration file may be found. For each directory searched for the mypy config file, this also searches the sub paths specified here."
+                    },
+                    "pylsp.plugins.pylsp_mypy.report_progress": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Report basic progress to the LSP client.\n\nWith this option, pylsp-mypy will report when mypy is running, given your editor supports LSP progress reporting. For small files this might produce annoying flashing in your editor, especially in with `pylsp.plugins.pylsp_mypy.live_mode`. For large projects, enabling this can be helpful to assure yourself whether mypy is still running."
                     },
                     "pylsp.plugins.rope_completion.enabled": {
                       "type": "boolean",
