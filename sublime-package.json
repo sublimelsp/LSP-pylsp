@@ -612,6 +612,15 @@
             },
             {
               "$ref": "sublime://settings/LSP-pylsp#/definitions/PluginConfig"
+            },
+            {
+              "properties": {
+                "python_binary": {
+                  "type": ["string", "null"],
+                  "default": null,
+                  "markdownDescription": "Defines the Python interpreter to use for creating an environment in which `pylsp` server will run.\n\nThe value can be set to a binary name (like `python` - in which case a binary with that name needs to be present on the PATH) or a full path to the Python interpreter binary.\n\nWhen the value is `null` then it defaults to `python` on Windows and `python3` on other platforms."
+                }
+              }
             }
           ],
         }
