@@ -134,7 +134,7 @@ The default formatter is `autopep8`. The possible formatters are:
 
 - yapf (`"pylsp.plugins.yapf.enabled"` in the settings)
 - autopep8 (`"pylsp.plugins.autopep8.enabled"` in the settings)
-- black (`"pylsp.plugins.pylsp_black.enabled"` in the settings. When enabling also make sure to manually disable `autopep8` and `yapf`.)
+- black (`"pylsp.plugins.pylsp_black.enabled"` in the settings. When enabling also make sure that `autopep8` and `yapf` are disabled.)
 
 ## Sorting import statements
 
