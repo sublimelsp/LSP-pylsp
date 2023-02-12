@@ -494,7 +494,7 @@
                       "default": false,
                       "description": "Make the autoimport database memory only. Drastically increases startup time."
                     },
-                    "pylsp.plugins.black.enabled": {
+                    "pylsp.plugins.pylsp_black.enabled": {
                       "type": "boolean",
                       "default": false,
                       "markdownDescription": "Enable or disable the plugin.\n\nEnabling `black` disables the `autopep8` and `yapf` plugins."

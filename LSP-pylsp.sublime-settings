@@ -234,7 +234,7 @@
         "pylsp.plugins.yapf.enabled": false,
         "pylsp.plugins.pyls_isort.enabled": false,
         // When enabling black, make sure to also disable autopep8 and yapf.
-        "pylsp.plugins.black.enabled": false,
+        "pylsp.plugins.pylsp_black.enabled": false,  // yes, `enabled` needs to use `pylsp_black` key, unlike ones below.
         "pylsp.plugins.black.cache_config": false,
         "pylsp.plugins.black.line_length": 88,
         "pylsp.plugins.black.preview": false,
