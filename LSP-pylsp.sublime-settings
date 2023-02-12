@@ -233,11 +233,11 @@
         "pylsp.plugins.autopep8.enabled": true,
         "pylsp.plugins.yapf.enabled": false,
         "pylsp.plugins.pyls_isort.enabled": false,
-        // Enabling black disables the autopep8 and yapf plugins.
-        "pylsp.plugins.pylsp_black.enabled": false,
-        "pylsp.plugins.pylsp_black.cache_config": false,
-        "pylsp.plugins.pylsp_black.line_length": 88,
-        "pylsp.plugins.pylsp_black.preview": false,
+        // When enabling black, make sure to also disable autopep8 and yapf.
+        "pylsp.plugins.black.enabled": false,
+        "pylsp.plugins.black.cache_config": false,
+        "pylsp.plugins.black.line_length": 88,
+        "pylsp.plugins.black.preview": false,
     },
     "command": ["$server_path"],
     // ST4
