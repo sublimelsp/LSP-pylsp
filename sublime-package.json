@@ -575,6 +575,122 @@
                       "default": false,
                       "description": "Resolve documentation and detail eagerly."
                     },
+                    "pylsp.plugins.ruff.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes` and `mccabe` plugins."
+                    },
+                    "pylsp.plugins.ruff.config": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": null,
+                      "markdownDescription": "Path to optional `pyproject.toml` file.\n\nNote that if a `pyproject.toml` file is present in the project, python-lsp-ruff will use these configuration options and this option will be ignored."
+                    },
+                    "pylsp.plugins.ruff.executable": {
+                      "type": "string",
+                      "default": "ruff",
+                      "markdownDescription": "Path to the `ruff` executable."
+                    },
+                    "pylsp.plugins.ruff.exclude": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "defaultSnippets": [
+                        {
+                          "body": ["dist"]
+                        }
+                      ],
+                      "default": null,
+                      "markdownDescription": "Exclude files from being checked by `ruff`."
+                    },
+                    "pylsp.plugins.ruff.ignore": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "defaultSnippets": [
+                        {
+                          "body": ["E501"]
+                        }
+                      ],
+                      "default": null,
+                      "markdownDescription": "Error codes to ignore."
+                    },
+                    "pylsp.plugins.ruff.extendIgnore": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": [],
+                      "defaultSnippets": [
+                        {
+                          "body": ["E501"]
+                        }
+                      ],
+                      "markdownDescription": "Same as `ignore`, but append to existing ignores."
+                    },
+                    "pylsp.plugins.ruff.lineLength": {
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "default": 88,
+                      "markdownDescription": "The line length to use when enforcing long-lines violations (like `E501`)."
+                    },
+                    "pylsp.plugins.ruff.perFileIgnores": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "default": {},
+                      "defaultSnippets": [
+                        {
+                          "body": {
+                            "__init__.py": ["E402"]
+                          }
+                        }
+                      ],
+                      "markdownDescription": "A list of mappings from file pattern to rule codes or prefixes to exclude, when considering any matching files."
+                    },
+                    "pylsp.plugins.ruff.select": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": ["E", "F"],
+                      "markdownDescription": "A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like `F841`), entire categories (like `F`), or anything in between.\n\nWhen breaking ties between enabled and disabled rules (via `select` and `ignore`, respectively), more specific prefixes override less specific prefixes.\n\nOn top of the defaults (`E`, `F`), there exist also flake8-bugbear (`B`) and flake8-quotes (`Q`)."
+                    },
+                    "pylsp.plugins.ruff.extendSelect": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": [],
+                      "defaultSnippets": [
+                        {
+                          "body": ["B", "Q"]
+                        }
+                      ],
+                      "markdownDescription": "Same as `select`, but append to existing error codes."
+                    },
                     "pylsp.plugins.yapf.enabled": {
                       "type": "boolean",
                       "default": false,
