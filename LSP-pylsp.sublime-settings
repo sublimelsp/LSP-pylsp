@@ -106,6 +106,8 @@
         "pylsp.plugins.pyflakes.enabled": false,
         "pylsp.plugins.pylint.enabled": false,
         "pylsp.plugins.pylsp_mypy.enabled": false,
+        // When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes` and `mccabe` plugins.
+        "pylsp.plugins.ruff.enabled": false,
 
         // --- flake8 settings ---
         // Path to the config file that will be the authoritative config source.
@@ -215,6 +217,33 @@
         // `pylsp.plugins.pylsp_mypy.live_mode`. For large projects, enabling this can be helpful to assure yourself
         // whether mypy is still running.
         "pylsp.plugins.pylsp_mypy.report_progress": false,
+
+        // --- ruff settings ---
+        // Note that any configuration options (except for `extendIgnore` and `extendSelect`) passed to ruff via pylsp
+        // are ignored if the project has a pyproject.toml.
+        //
+        // Path to optional pyproject.toml file.
+        "pylsp.plugins.ruff.config": null,
+        // Exclude files from being checked by ruff.
+        "pylsp.plugins.ruff.exclude": null,
+        // Path to the ruff executable.
+        "pylsp.plugins.ruff.executable": "ruff",
+        // Error codes to ignore.
+        "pylsp.plugins.ruff.ignore": null,
+        // Same as ignore, but append to existing ignores.
+        "pylsp.plugins.ruff.extendIgnore": [],
+        // Set the line-length for length checks.
+        "pylsp.plugins.ruff.lineLength": 88,
+        // File-specific error codes to be ignored.
+        "pylsp.plugins.ruff.perFileIgnores": {},
+        // A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like F841),
+        // entire categories (like F), or anything in between.
+        // When breaking ties between enabled and disabled rules (via select and ignore, respectively),
+        // more specific prefixes override less specific prefixes.
+        // On top of the defaults (`E`, `F`), there exist also flake8-bugbear (`B`) and flake8-quotes (`Q`).
+        "pylsp.plugins.ruff.select": ["E", "F"],
+        //  Same as select, but append to existing error codes.
+        "pylsp.plugins.ruff.extendSelect": [],
 
         // --- rope_autoimport settings ---
         // Enable or disable autoimport.
