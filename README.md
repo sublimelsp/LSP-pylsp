@@ -125,6 +125,7 @@ The default linter is `pycodestyle`. The possible linters are:
 - pyflakes (`"pylsp.plugins.pyflakes.enabled"` in the settings)
 - pylint (`"pylsp.plugins.pylint.enabled"` in the settings)
 - pylsp_mypy (`"pylsp.plugins.pylsp_mypy.enabled"` in the settings)
+- ruff (`"pylsp.plugins.ruff.enabled"` in the settings)
 
 After changing a linter, you must restart Sublime Text.
 
