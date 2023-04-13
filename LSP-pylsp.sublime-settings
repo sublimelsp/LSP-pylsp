@@ -106,7 +106,7 @@
         "pylsp.plugins.pyflakes.enabled": false,
         "pylsp.plugins.pylint.enabled": false,
         "pylsp.plugins.pylsp_mypy.enabled": false,
-        // When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes` and `mccabe` plugins.
+        // When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe` and `pyls_isort` plugins.
         "pylsp.plugins.ruff.enabled": false,
 
         // --- flake8 settings ---
@@ -221,6 +221,7 @@
         // --- ruff settings ---
         // Note that any configuration options (except for `extendIgnore` and `extendSelect`) passed to ruff via pylsp
         // are ignored if the project has a pyproject.toml.
+        // See also ruff documenation https://beta.ruff.rs/docs/configuration/
         //
         // Path to optional pyproject.toml file.
         "pylsp.plugins.ruff.config": null,
@@ -231,19 +232,23 @@
         // Error codes to ignore.
         "pylsp.plugins.ruff.ignore": null,
         // Same as ignore, but append to existing ignores.
-        "pylsp.plugins.ruff.extendIgnore": [],
+        "pylsp.plugins.ruff.extendIgnore": null,
+        // List of error codes to fix during formatting. The default is `["I"]`, any additional codes are appended to
+        // this list. Note that you might also want to add `"I"` in the `pylsp.plugins.ruff.extendSelect` option for
+        // import sorting to work.
+        "pylsp.plugins.ruff.format": [],
         // Set the line-length for length checks.
-        "pylsp.plugins.ruff.lineLength": 88,
+        "pylsp.plugins.ruff.lineLength": null,
         // File-specific error codes to be ignored.
         "pylsp.plugins.ruff.perFileIgnores": {},
         // A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like F841),
         // entire categories (like F), or anything in between.
         // When breaking ties between enabled and disabled rules (via select and ignore, respectively),
         // more specific prefixes override less specific prefixes.
-        // On top of the defaults (`E`, `F`), there exist also flake8-bugbear (`B`) and flake8-quotes (`Q`).
+        // See all supported rule codes at https://beta.ruff.rs/docs/rules/
         "pylsp.plugins.ruff.select": ["E", "F"],
-        //  Same as select, but append to existing error codes.
-        "pylsp.plugins.ruff.extendSelect": [],
+        // Same as select, but append to existing error codes.
+        "pylsp.plugins.ruff.extendSelect": null,
 
         // --- rope_autoimport settings ---
         // Enable or disable autoimport.
