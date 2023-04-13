@@ -578,7 +578,7 @@
                     "pylsp.plugins.ruff.enabled": {
                       "type": "boolean",
                       "default": false,
-                      "markdownDescription": "When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes` and `mccabe` plugins."
+                      "markdownDescription": "When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe` and `pyls_isort` plugins."
                     },
                     "pylsp.plugins.ruff.config": {
                       "type": [
@@ -641,12 +641,20 @@
                       ],
                       "markdownDescription": "Same as `ignore`, but append to existing ignores."
                     },
+                    "pylsp.plugins.ruff.format": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": [],
+                      "markdownDescription": "List of error codes to fix during formatting. The default is `[\"I\"]`, any additional codes are appended to this list. Note that you might also want to add `\"I\"` in the `pylsp.plugins.ruff.extendSelect` option for import sorting to work."
+                    },
                     "pylsp.plugins.ruff.lineLength": {
                       "type": [
                         "number",
                         "null"
                       ],
-                      "default": 88,
+                      "default": null,
                       "markdownDescription": "The line length to use when enforcing long-lines violations (like `E501`)."
                     },
                     "pylsp.plugins.ruff.perFileIgnores": {
@@ -673,7 +681,7 @@
                         "type": "string"
                       },
                       "default": ["E", "F"],
-                      "markdownDescription": "A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like `F841`), entire categories (like `F`), or anything in between.\n\nWhen breaking ties between enabled and disabled rules (via `select` and `ignore`, respectively), more specific prefixes override less specific prefixes.\n\nOn top of the defaults (`E`, `F`), there exist also flake8-bugbear (`B`) and flake8-quotes (`Q`)."
+                      "markdownDescription": "A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like `F841`), entire categories (like `F`), or anything in between.\n\nWhen breaking ties between enabled and disabled rules (via `select` and `ignore`, respectively), more specific prefixes override less specific prefixes.\n\nSee all supported rule codes at https://beta.ruff.rs/docs/rules/."
                     },
                     "pylsp.plugins.ruff.extendSelect": {
                       "type": [
