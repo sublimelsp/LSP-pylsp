@@ -4,4 +4,4 @@ pylsp-mypy==0.6.6
 python-lsp-black==1.2.1
 python-lsp-black==1.2.1
 python-lsp-ruff==1.4.0
-python-lsp-server[all]==1.7.2
+python-lsp-server[all]==1.7.3
