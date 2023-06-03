@@ -699,6 +699,32 @@
                       ],
                       "markdownDescription": "Same as `select`, but append to existing error codes."
                     },
+                    "pylsp.plugins.ruff.severities": {
+                      "type": ["object", "null"],
+                      "additionalProperties": {
+                        "enum": [
+                          "E",
+                          "W",
+                          "I",
+                          "H"
+                        ],
+                        "markdownEnumDescriptions": [
+                          "Error",
+                          "Warning",
+                          "Information",
+                          "Hint"
+                        ]
+                      },
+                      "default": null,
+                      "defaultSnippets": [
+                        {
+                          "body": {
+                            "E999": "E"
+                          }
+                        }
+                      ],
+                      "markdownDescription": "Dictionary of custom severity levels for specific codes, see [Custom severities](https://github.com/python-lsp/python-lsp-ruff#custom-severities)."
+                    },
                     "pylsp.plugins.yapf.enabled": {
                       "type": "boolean",
                       "default": false,
