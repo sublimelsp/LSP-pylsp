@@ -249,6 +249,8 @@
         "pylsp.plugins.ruff.select": ["E", "F"],
         // Same as select, but append to existing error codes.
         "pylsp.plugins.ruff.extendSelect": null,
+        // Dictionary of custom severity levels for specific codes, see https://github.com/python-lsp/python-lsp-ruff#custom-severities.
+        "pylsp.plugins.ruff.severities": null,
 
         // --- rope_autoimport settings ---
         // Enable or disable autoimport.
