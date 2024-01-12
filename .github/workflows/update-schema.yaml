@@ -57,7 +57,7 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Following are the [schema](https://github.com/python-lsp/python-lsp-server/blob/${{ steps.version-to.outputs.VERSION }}/pylsp/config/schema.json) changes between tags `${{ steps.version-from.outputs.VERSION }}` and `${{ steps.version-to.outputs.VERSION }}`. Make sure that those are reflected in `LSP-pylsp.sublime-commands` and `sublime-package.json` files.
+            Following are the [schema](https://github.com/python-lsp/python-lsp-server/blob/${{ steps.version-to.outputs.VERSION }}/pylsp/config/schema.json) changes between tags `${{ steps.version-from.outputs.VERSION }}` and `${{ steps.version-to.outputs.VERSION }}`. Make sure that those are reflected in `LSP-pylsp.sublime-settings` and `sublime-package.json` files.
 
             ```diff
             ${{ steps.schema_diff.outputs.CHANGES }}
