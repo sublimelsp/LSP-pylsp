@@ -44,5 +44,10 @@ download_repo_by_tag "$tag_to"
 schema_to=$(cat "${TEMP_REPO_DIR}/pylsp/config/schema.json")
 rm -rf "${TEMP_REPO_DIR}"
 
-# This will exit with error code on changes. Make sure to not rely on anything running after it.
-diff -u <(echo "$schema_from") <(echo "$schema_to") && echo "No changes"
+# Returns with error code when there are changes.
+changes=$(diff -u <(echo "$schema_from") <(echo "$schema_to") || echo "")
+if [ "$changes" = "" ]; then
+   echo "No changes"
+else
+   echo "$changes"
+fi
