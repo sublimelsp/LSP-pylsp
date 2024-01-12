@@ -13,7 +13,6 @@ permissions:
 
 jobs:
   check_schema:
-    name: Check pylsp schema
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +25,7 @@ jobs:
 
       - name: Get version from PR
         id: version-to
-        run: echo "VERSION=$(rg -o 'python-lsp-server[all]==([\d.]+)' -r \$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
+        run: echo "VERSION=$(rg -o 'python-lsp-server\[all\]==([\d.]+)' -r \$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
 
       - uses: actions/checkout@v4
         with:
@@ -34,7 +33,7 @@ jobs:
 
       - name: Get version from master
         id: version-from
-        run: echo "VERSION=$(rg -o 'python-lsp-server[all]==([\d.]+)' -r \$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
+        run: echo "VERSION=$(rg -o 'python-lsp-server\[all\]==([\d.]+)' -r \$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
 
       - name: Run schema_diff.sh script
         id: schema_diff
