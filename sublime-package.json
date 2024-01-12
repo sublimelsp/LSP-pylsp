@@ -54,6 +54,15 @@
                       "uniqueItems": true,
                       "description": "Exclude files or directories which match these patterns."
                     },
+                    "pylsp.plugins.flake8.extendIgnore": {
+                      "type": "array",
+                      "default": [],
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "description": "List of errors and warnings to append to ignore list."
+                    },
                     "pylsp.plugins.flake8.filename": {
                       "type": [
                         "array",
@@ -487,7 +496,17 @@
                     "pylsp.plugins.rope_autoimport.enabled": {
                       "type": "boolean",
                       "default": false,
-                      "description": "Enable or disable autoimport."
+                      "description": "Enable or disable autoimport. If false, neither completions nor code actions are enabled. If true, the respective features can be enabled or disabled individually."
+                    },
+                    "pylsp.plugins.rope_autoimport.completions.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable or disable autoimport completions."
+                    },
+                    "pylsp.plugins.rope_autoimport.code_actions.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable or disable autoimport code actions (e.g. for quick fixes)."
                     },
                     "pylsp.plugins.rope_autoimport.memory": {
                       "type": "boolean",

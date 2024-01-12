@@ -114,6 +114,8 @@
         "pylsp.plugins.flake8.config": null,
         // Exclude files or directories which match these patterns.
         "pylsp.plugins.flake8.exclude": null,
+        // List of errors and warnings to append to ignore list.
+        "pylsp.plugins.flake8.extendIgnore": [],
         // Path to the flake8 executable.
         "pylsp.plugins.flake8.executable": "flake8",
         // When parsing directories, only check filenames matching these patterns.
@@ -254,8 +256,14 @@
         "pylsp.plugins.ruff.severities": null,
 
         // --- rope_autoimport settings ---
-        // Enable or disable autoimport.
+        // Enable or disable autoimport. If false, neither completions nor code actions are enabled. If true, the
+        // respective features can be enabled or disabled individually.
         "pylsp.plugins.rope_autoimport.enabled": false,
+        // Enable or disable autoimport completions.
+        "pylsp.plugins.rope_autoimport.completions.enabled": true,
+        // Enable or disable autoimport code actions (e.g. for quick fixes).
+        "pylsp.plugins.rope_autoimport.code_actions.enabled": true,
+
         // Make the autoimport database memory only. Drastically increases startup time.
         "pylsp.plugins.rope_autoimport.memory": false,
 
