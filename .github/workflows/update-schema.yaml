@@ -1,0 +1,66 @@
+name: Check for updates in pylsp schema
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'requirements.txt'
+
+permissions:
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  check_schema:
+    name: Check pylsp schema
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+
+      - name: Get version from PR
+        id: version-to
+        run: echo "VERSION=$(rg -o 'python-lsp-server[all]==([\d.]+)' -r \$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Get version from master
+        id: version-from
+        run: echo "VERSION=$(rg -o 'python-lsp-server[all]==([\d.]+)' -r \$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
+
+      - name: Run schema_diff.sh script
+        id: schema_diff
+        run: |
+          {
+            echo 'CHANGES<<EOF'
+            ./scripts/schema_diff.sh ${{ steps.version-from.outputs.VERSION }} ${{ steps.version-to.outputs.VERSION }}
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Following are the [schema](https://github.com/python-lsp/python-lsp-server/blob/${{ steps.version-to.outputs.VERSION }}/pylsp/config/schema.json) changes between tags `${{ steps.version-from.outputs.VERSION }}` and `${{ steps.version-to.outputs.VERSION }}`. Make sure that those are reflected in `LSP-pylsp.sublime-commands` and `sublime-package.json` files.
+
+            ```diff
+            ${{ steps.schema_diff.outputs.CHANGES }}
+            ```
+          edit-mode: replace
