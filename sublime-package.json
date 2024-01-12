@@ -590,18 +590,21 @@
                       "default": false,
                       "markdownDescription": "When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe` and `pyls_isort` plugins."
                     },
-                    "pylsp.plugins.ruff.config": {
+                    "pylsp.plugins.ruff.path": {
                       "type": [
                         "string",
                         "null"
                       ],
                       "default": null,
-                      "markdownDescription": "Path to optional `pyproject.toml` file.\n\nNote that if a `pyproject.toml` file is present in the project, python-lsp-ruff will use these configuration options and this option will be ignored."
+                      "markdownDescription": "Custom config for `ruff` to use."
                     },
                     "pylsp.plugins.ruff.executable": {
-                      "type": "string",
-                      "default": "ruff",
-                      "markdownDescription": "Path to the `ruff` executable."
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": null,
+                      "markdownDescription": "Custom path to `ruff`."
                     },
                     "pylsp.plugins.ruff.exclude": {
                       "type": [
@@ -633,7 +636,7 @@
                         }
                       ],
                       "default": null,
-                      "markdownDescription": "Error codes to ignore."
+                      "markdownDescription": "Rules to be ignored by `ruff`."
                     },
                     "pylsp.plugins.ruff.extendIgnore": {
                       "type": [
@@ -649,15 +652,17 @@
                           "body": ["E501"]
                         }
                       ],
-                      "markdownDescription": "Same as `ignore`, but append to existing ignores."
+                      "markdownDescription": "Rules that are additionally ignored by `ruff`."
                     },
                     "pylsp.plugins.ruff.format": {
                       "type": "array",
                       "items": {
                         "type": "string"
                       },
-                      "default": [],
-                      "markdownDescription": "List of error codes to fix during formatting. The default is `[\"I\"]`, any additional codes are appended to this list. Note that you might also want to add `\"I\"` in the `pylsp.plugins.ruff.extendSelect` option for import sorting to work."
+                      "default": [
+                        "I"
+                      ],
+                      "markdownDescription": "Rules that are marked as fixable by `ruff` that should be fixed when running `textDocument/formatting`. The default is `[\"I\"]`, any additional codes are appended to this list. Note that you might also want to add `\"I\"` in the `pylsp.plugins.ruff.extendSelect` option for import sorting to work."
                     },
                     "pylsp.plugins.ruff.lineLength": {
                       "type": [
@@ -665,7 +670,7 @@
                         "null"
                       ],
                       "default": null,
-                      "markdownDescription": "The line length to use when enforcing long-lines violations (like `E501`)."
+                      "markdownDescription": "Line length to pass to `ruff` checking and formatting."
                     },
                     "pylsp.plugins.ruff.perFileIgnores": {
                       "type": [
@@ -680,7 +685,7 @@
                           }
                         }
                       ],
-                      "markdownDescription": "A list of mappings from file pattern to rule codes or prefixes to exclude, when considering any matching files."
+                      "markdownDescription": "Rules that should be ignored for specific files. A list of mappings from file pattern to rule code or prefixes to exclude, when considering any matching files."
                     },
                     "pylsp.plugins.ruff.select": {
                       "type": [

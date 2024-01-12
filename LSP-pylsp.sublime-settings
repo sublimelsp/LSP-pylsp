@@ -221,34 +221,35 @@
         // --- ruff settings ---
         // Note that any configuration options (except for `extendIgnore` and `extendSelect`) passed to ruff via pylsp
         // are ignored if the project has a pyproject.toml.
-        // See also ruff documenation https://beta.ruff.rs/docs/configuration/
+        // See also ruff documenation https://docs.astral.sh/ruff/configuration/
         //
-        // Path to optional pyproject.toml file.
-        "pylsp.plugins.ruff.config": null,
-        // Exclude files from being checked by ruff.
-        "pylsp.plugins.ruff.exclude": null,
-        // Path to the ruff executable.
-        "pylsp.plugins.ruff.executable": "ruff",
-        // Error codes to ignore.
-        "pylsp.plugins.ruff.ignore": null,
-        // Same as ignore, but append to existing ignores.
-        "pylsp.plugins.ruff.extendIgnore": null,
-        // List of error codes to fix during formatting. The default is `["I"]`, any additional codes are appended to
-        // this list. Note that you might also want to add `"I"` in the `pylsp.plugins.ruff.extendSelect` option for
-        // import sorting to work.
-        "pylsp.plugins.ruff.format": [],
-        // Set the line-length for length checks.
-        "pylsp.plugins.ruff.lineLength": null,
-        // File-specific error codes to be ignored.
-        "pylsp.plugins.ruff.perFileIgnores": {},
+        // Custom config for `ruff` to use.
+        "pylsp.plugins.ruff.path": null,
+        // Custom path to `ruff`.
+        "pylsp.plugins.ruff.executable": null,
         // A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like F841),
         // entire categories (like F), or anything in between.
         // When breaking ties between enabled and disabled rules (via select and ignore, respectively),
         // more specific prefixes override less specific prefixes.
-        // See all supported rule codes at https://beta.ruff.rs/docs/rules/
+        // See all supported rule codes at https://docs.astral.sh/ruff/rules/
         "pylsp.plugins.ruff.select": ["E", "F"],
         // Same as select, but append to existing error codes.
         "pylsp.plugins.ruff.extendSelect": null,
+        // Exclude files from being checked by ruff.
+        "pylsp.plugins.ruff.exclude": null,
+        // Rules to be ignored by `ruff`.
+        "pylsp.plugins.ruff.ignore": null,
+        // Rules that are additionally ignored by `ruff`.
+        "pylsp.plugins.ruff.extendIgnore": null,
+        // Rules that are marked as fixable by `ruff` that should be fixed when running `textDocument/formatting`.
+        // The default is `["I"]`, any additional codes are appended to this list. Note that you might also want to
+        // add `"I"` in the `pylsp.plugins.ruff.extendSelect` option for import sorting to work.
+        "pylsp.plugins.ruff.format": ["I"],
+        // Line length to pass to `ruff` checking and formatting.
+        "pylsp.plugins.ruff.lineLength": null,
+        // Rules that should be ignored for specific files.
+        // A list of mappings from file pattern to rule code or prefixes to exclude, when considering any matching files.
+        "pylsp.plugins.ruff.perFileIgnores": null,
         // Dictionary of custom severity levels for specific codes, see https://github.com/python-lsp/python-lsp-ruff#custom-severities.
         "pylsp.plugins.ruff.severities": null,
 
