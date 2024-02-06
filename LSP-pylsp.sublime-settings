@@ -287,9 +287,6 @@
         "pylsp.plugins.black.skip_magic_trailing_comma": false,
     },
     "command": ["$server_path"],
-    // ST4
-    "selector": "source.python",
-    // ST3
     "languages": [
         {
             "languageId": "python",
