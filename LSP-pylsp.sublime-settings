@@ -106,7 +106,7 @@
         "pylsp.plugins.pyflakes.enabled": false,
         "pylsp.plugins.pylint.enabled": false,
         "pylsp.plugins.pylsp_mypy.enabled": false,
-        // When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe` and `pyls_isort` plugins.
+        // When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe`, `autopep8` and `yapf` plugins.
         "pylsp.plugins.ruff.enabled": false,
 
         // --- flake8 settings ---
@@ -225,8 +225,8 @@
         // are ignored if the project has a pyproject.toml.
         // See also ruff documenation https://docs.astral.sh/ruff/configuration/
         //
-        // Custom config for `ruff` to use.
-        "pylsp.plugins.ruff.path": null,
+        // Path to a custom config for `ruff` to use.
+        "pylsp.plugins.ruff.config": null,
         // Custom path to `ruff`.
         "pylsp.plugins.ruff.executable": null,
         // A list of rule codes or prefixes to enable. Prefixes can specify exact rules (like F841),
@@ -276,9 +276,10 @@
         // --- Formatters -----------------------------------------------------
         // By default, autopep8 is enabled
         "pylsp.plugins.autopep8.enabled": true,
+        "pylsp.plugins.ruff.formatEnabled": false,
         "pylsp.plugins.yapf.enabled": false,
         "pylsp.plugins.pyls_isort.enabled": false,
-        // When enabling black, make sure that autopep8 and yapf are disabled.
+        // When enabling black, make sure that autopep8, ruff formatter and yapf are disabled.
         "pylsp.plugins.black.enabled": false,
         "pylsp.plugins.black.cache_config": false,
         "pylsp.plugins.black.line_length": 88,

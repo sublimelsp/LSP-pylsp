@@ -607,15 +607,20 @@
                     "pylsp.plugins.ruff.enabled": {
                       "type": "boolean",
                       "default": false,
-                      "markdownDescription": "When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe` and `pyls_isort` plugins."
+                      "markdownDescription": "When enabling, it's recommended to disable `flake8`, `pycodestyle`, `pyflakes`, `mccabe`, `autopep8` and `yapf` plugins."
                     },
-                    "pylsp.plugins.ruff.path": {
+                    "pylsp.plugins.ruff.formatEnabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable formatting using ruff's formatter."
+                    },
+                    "pylsp.plugins.ruff.config": {
                       "type": [
                         "string",
                         "null"
                       ],
                       "default": null,
-                      "markdownDescription": "Custom config for `ruff` to use."
+                      "markdownDescription": "Path to a custom config for `ruff` to use."
                     },
                     "pylsp.plugins.ruff.executable": {
                       "type": [
