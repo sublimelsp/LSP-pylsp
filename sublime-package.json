@@ -611,7 +611,7 @@
                     },
                     "pylsp.plugins.ruff.formatEnabled": {
                       "type": "boolean",
-                      "default": true,
+                      "default": false,
                       "markdownDescription": "Enable formatting using ruff's formatter."
                     },
                     "pylsp.plugins.ruff.config": {

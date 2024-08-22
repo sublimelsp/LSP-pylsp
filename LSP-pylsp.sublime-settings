@@ -274,9 +274,9 @@
         "pylsp.plugins.rope_completion.enabled": false,
 
         // --- Formatters -----------------------------------------------------
-        // By default, ruff formatter is enabled.
-        "pylsp.plugins.ruff.formatEnabled": true,
-        "pylsp.plugins.autopep8.enabled": false,
+        // By default, autopep8 is enabled
+        "pylsp.plugins.autopep8.enabled": true,
+        "pylsp.plugins.ruff.formatEnabled": false,
         "pylsp.plugins.yapf.enabled": false,
         "pylsp.plugins.pyls_isort.enabled": false,
         // When enabling black, make sure that autopep8, ruff formatter and yapf are disabled.
