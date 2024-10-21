@@ -1,4 +1,4 @@
-mypy==1.11.2
+mypy==1.12.1
 pyls-isort==0.2.2
 pylsp-mypy==0.6.9
 python-lsp-black==2.0.0
