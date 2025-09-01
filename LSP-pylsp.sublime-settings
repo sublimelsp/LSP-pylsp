@@ -14,7 +14,8 @@
 // {
 //     "settings":
 //     {
-//         "pylsp.plugins.pylsp_black.enabled": true
+//         "pylsp.plugins.autopep8.enabled": false,
+//         "pylsp.plugins.black.enabled": true
 //     }
 // }
 //

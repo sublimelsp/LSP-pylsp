@@ -136,7 +136,7 @@ The default formatter is `autopep8`. The possible formatters are:
 | Name           | Setting | Note |
 |:---------------|:--------|:-----|
 | autopep8       | `pylsp.plugins.autopep8.enabled` | |
-| black          | `pylsp.plugins.pylsp_black.enabled` | When enabling also make sure that `autopep8` and `yapf` are disabled. |
+| black          | `pylsp.plugins.black.enabled` | When enabling also make sure that `autopep8` and `yapf` are disabled. |
 | ruff           | `pylsp.plugins.ruff.formatEnabled` | Make sure to also enable `pylsp.plugins.ruff.enabled` and disable other formatters and linters. |
 | yapf           | `pylsp.plugins.yapf.enabled` | |
 
