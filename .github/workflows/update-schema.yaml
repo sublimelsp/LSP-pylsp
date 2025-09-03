@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install packages
         run: |
@@ -27,7 +27,7 @@ jobs:
         id: version-to
         run: echo "VERSION=$(rg -o 'python-lsp-server\[all\]==([\d.]+)' -r v\$1 "requirements.txt")" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: master
 
