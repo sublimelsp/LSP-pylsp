@@ -8,6 +8,11 @@ from typing_extensions import override
 import sublime
 
 
+class UvManagerNotInitializedError(Exception):
+    def __init__(self) -> None:
+        super().__init__('Expected UvVenvManager to be initialized')
+
+
 @final
 class Pylsp(GenericClientHandler):
     package_name = str(__package__)
@@ -26,7 +31,7 @@ class Pylsp(GenericClientHandler):
     @override
     def install_or_update(cls) -> None:
         if not cls.uv_venv_manager:
-            raise Exception('Expected UvVenvManager to be initialized')
+            raise UvManagerNotInitializedError
         cls.uv_venv_manager.install()
 
     @classmethod
