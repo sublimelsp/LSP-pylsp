@@ -1,9 +1,58 @@
-[tool.black]
-line-length = 120
-target-version = ['py33']
-
 [tool.pyright]
-pythonVersion = '3.11'
+pythonVersion = "3.8"
+reportAny = "none"
+reportExplicitAny = "none"
+reportUnusedCallResult = "none"
 
 [tool.ruff]
 line-length = 120
+target-version = "py38"
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+# Respect magic trailing commas.
+skip-magic-trailing-comma = false
+# Automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+case-sensitive = false
+force-single-line = true
+from-first = true
+no-sections = true
+order-by-type = false
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.lint]
+# Enable preview rules.
+preview = true
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+select = ["ALL"]
+# Refer to https://docs.astral.sh/ruff/rules/
+ignore = [
+    "CPY001",  # https://docs.astral.sh/ruff/rules/missing-copyright-notice/
+    "D100",  # https://docs.astral.sh/ruff/rules/undocumented-public-module/#undocumented-public-module-d100
+    "D101",  # https://docs.astral.sh/ruff/rules/undocumented-public-class/
+    "D102",  # https://docs.astral.sh/ruff/rules/undocumented-public-method/
+    "D103",  # https://docs.astral.sh/ruff/rules/undocumented-public-function/
+    "D104",  # https://docs.astral.sh/ruff/rules/undocumented-public-package/
+    "D105",  # https://docs.astral.sh/ruff/rules/undocumented-magic-method/
+    "D107",  # https://docs.astral.sh/ruff/rules/undocumented-public-init/
+    "Q000",  # https://docs.astral.sh/ruff/rules/bad-quotes-inline-string/#bad-quotes-inline-string-q000
+]
+
+[tool.tox]
+env_list = ["py3"]
+skipsdist = true
+
+[tool.tox.env_run_base]
+deps = [
+    # "pyright==1.1.408",
+    "ruff==0.15.0",
+]
+commands = [
+    # ["pyright"],
+    ["ruff", "check"],
+]
