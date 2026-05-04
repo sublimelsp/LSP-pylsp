@@ -22,6 +22,12 @@
 // You must then *save* the *right* view in
 // $DATA/Packages/User/LSP-pylsp.sublime-settings.
 {
+    // The path to the server binary to use for starting the language server.
+    // Use `auto` for the package to manage (install/update) server automatically.
+    // NOTE: Change this instead of directly updating `command` - the `${server_path}` variable is dynamically resolved
+    // based on this setting.
+    // WARNING: Using custom binary could result in package settings not matching what server supports.
+    "server_path": "auto",
     "env": {
         // Override PYTHONPATH and MYPYPATH to extend the paths that jedi and mypy searches when looking for stub files.
         // Paths have to be specified in two places so that both Jedi and Mypy can pick up types and stubs.
