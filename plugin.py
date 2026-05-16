@@ -1,63 +1,32 @@
 from __future__ import annotations
 
-from lsp_utils import GenericClientHandler
+from LSP.plugin import LspPlugin
+from LSP.plugin import OnPreStartContext
 from lsp_utils import UvVenvManager
 from pathlib import Path
+from sublime_lib import ResourcePath
 from typing import final
 from typing_extensions import override
 import sublime
 
 
-class UvManagerNotInitializedError(Exception):
-    def __init__(self) -> None:
-        super().__init__('Expected UvVenvManager to be initialized')
-
-
 @final
-class Pylsp(GenericClientHandler):
-    package_name = str(__package__)
-    uv_venv_manager: UvVenvManager | None = None
-
-    # --- GenericClientHandler handlers --------------------------------------------------------------------------------
+class Pylsp(LspPlugin):
 
     @classmethod
     @override
-    def needs_update_or_installation(cls) -> bool:
-        if not cls.uv_venv_manager:
-            cls.uv_venv_manager = UvVenvManager(cls.package_name, 'server/pyproject.toml', Path(cls.storage_path()))
-        return cls.uv_venv_manager.needs_install_or_update()
-
-    @classmethod
-    @override
-    def install_or_update(cls) -> None:
-        if not cls.uv_venv_manager:
-            raise UvManagerNotInitializedError
-        cls.uv_venv_manager.install()
-
-    @classmethod
-    @override
-    def get_additional_variables(cls) -> dict[str, str]:
-        variables = super().get_additional_variables()
-        variables.update({
+    def on_pre_start_async(cls, context: OnPreStartContext) -> None:
+        package_name = cls.plugin_storage_path.name
+        UvVenvManager.on_pre_start_async(
+            context, cls.plugin_storage_path, ResourcePath('Packages', package_name, 'server'), 'pylsp')
+        context.variables.update({
             'sublime_py_files_dir': str(Path(sublime.__file__).parent),
         })
-        if cls.uv_venv_manager:
-            variables.update({
-                'server_path': str(cls.uv_venv_manager.venv_bin_path / 'pylsp'),
-            })
-        return variables
-
-    @classmethod
-    @override
-    def get_additional_paths(cls) -> list[str]:
-        if uv_venv_manager := cls.uv_venv_manager:
-            return [str(uv_venv_manager.venv_bin_path)]
-        return []
 
 
 def plugin_loaded() -> None:
-    Pylsp.setup()
+    Pylsp.register()
 
 
 def plugin_unloaded() -> None:
-    Pylsp.cleanup()
+    Pylsp.unregister()
