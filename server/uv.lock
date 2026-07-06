@@ -148,7 +148,7 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
@@ -304,7 +304,7 @@ dependencies = [
 requires-dist = [
     { name = "mypy", specifier = "==1.20.2" },
     { name = "pyls-isort", specifier = "==0.2.2" },
-    { name = "pylsp-mypy", specifier = "==0.7.1" },
+    { name = "pylsp-mypy", specifier = "==0.7.3" },
     { name = "python-lsp-black", specifier = "==2.0.0" },
     { name = "python-lsp-ruff", specifier = "==2.3.1" },
     { name = "python-lsp-server", extras = ["all"], specifier = "==1.14.0" },
@@ -505,16 +505,16 @@ sdist = { url = "https://files.pythonhosted.org/packages/be/61/775e74d8b5e34af59
 
 [[package]]
 name = "pylsp-mypy"
-version = "0.7.1"
+version = "0.7.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mypy" },
     { name = "python-lsp-server" },
     { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/76/16/af7bc6a6b89e22d754823935bc8e82df3b97df5daba37b12ee1627fc8d61/pylsp_mypy-0.7.1.tar.gz", hash = "sha256:4465a9b5f7816f02579f1398e369cae953952c7d2aaa9cab35e7a554e242b766", size = 18807, upload-time = "2026-02-02T16:01:29.916Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ac/47/911bff79573b3a5fd9c1c05bd02540bfdb71951788f9f7f3d0a44f9a3209/pylsp_mypy-0.7.3.tar.gz", hash = "sha256:7a7d3117ea0361cae2ed00614195d36f4c157a06116c8792449e19f57319ddbf", size = 18300, upload-time = "2026-06-16T19:09:21.351Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/36/f8/cc15094638b81aaa61ab084dfdaee077eaf4ade9ecdd2a5b35ca0f3735c8/pylsp_mypy-0.7.1-py3-none-any.whl", hash = "sha256:b1cfc7aa9aab1ee21d45ae353b7f6ad2ca044b58d6150e3e5415ac3523e85b26", size = 12604, upload-time = "2026-02-02T16:01:27.494Z" },
+    { url = "https://files.pythonhosted.org/packages/88/0a/d98eb5015926a3471b164a55d70aebc85dcd2e328bb6309cc16cf3640177/pylsp_mypy-0.7.3-py3-none-any.whl", hash = "sha256:9f0e52fa8cf4c1ab8cccf8425f192fa50a9874c20919a93ab61cc42069824785", size = 12285, upload-time = "2026-06-16T19:09:20.392Z" },
 ]
 
 [[package]]
