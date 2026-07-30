@@ -294,22 +294,28 @@ name = "lsp-pylsp"
 version = "1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "black" },
+    { name = "isort" },
     { name = "mypy" },
     { name = "pyls-isort" },
     { name = "pylsp-mypy" },
     { name = "python-lsp-black" },
     { name = "python-lsp-ruff" },
     { name = "python-lsp-server", extra = ["all"] },
+    { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "black", specifier = "==26.5.1" },
+    { name = "isort", specifier = "==8.0.1" },
     { name = "mypy", specifier = "==1.20.2" },
     { name = "pyls-isort", specifier = "==0.2.2" },
     { name = "pylsp-mypy", specifier = "==0.8.0" },
     { name = "python-lsp-black", specifier = "==2.0.0" },
     { name = "python-lsp-ruff", specifier = "==2.3.1" },
     { name = "python-lsp-server", extras = ["all"], specifier = "==1.15.0" },
+    { name = "ruff", specifier = "==0.15.20" },
 ]
 
 [[package]]
