@@ -356,7 +356,7 @@ requires-dist = [
     { name = "pyls-isort", specifier = "==0.2.2" },
     { name = "pylsp-mypy", specifier = "==0.8.0" },
     { name = "python-lsp-black", specifier = "==2.0.0" },
-    { name = "python-lsp-ruff", specifier = "==2.3.1" },
+    { name = "python-lsp-ruff", specifier = "==2.3.4" },
     { name = "python-lsp-server", extras = ["all"], specifier = "==1.15.0" },
     { name = "ruff", specifier = "==0.16.1" },
 ]
@@ -598,7 +598,7 @@ wheels = [
 
 [[package]]
 name = "python-lsp-ruff"
-version = "2.3.1"
+version = "2.3.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cattrs" },
@@ -607,9 +607,9 @@ dependencies = [
     { name = "ruff" },
     { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/43/17/dc7475750fbc89a06fe9c6efc5bf8ff06813eb77e3b6c5d770a23b0d0f3d/python_lsp_ruff-2.3.1.tar.gz", hash = "sha256:37831ae9bd498214b13ea1e73df7fe5721c7055534c644efbb81c52069e73341", size = 17421, upload-time = "2026-04-01T17:41:32.984Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ed/7b/e049a8545b7d815bb4ae038ec8dc0bfb2e5037c5c4244707857b9ccdd2b9/python_lsp_ruff-2.3.4.tar.gz", hash = "sha256:0c101db5ba54390dd0d3401c73b291d909fe5e5295e85ab2cfe9c21d08ef0905", size = 17397, upload-time = "2026-09-08T08:36:10.497Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/85/e1/bf48cadd0c5be17e8b45b1bc2a3aa81706ba9b0d98593a8bc3cfd4ffd686/python_lsp_ruff-2.3.1-py3-none-any.whl", hash = "sha256:68a9cfc170341a6275c35416127e639a41ca2cb343e5641ac3dabad667d00202", size = 12051, upload-time = "2026-04-01T17:41:31.741Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/9e/0f9412498fa72a016226e34dfff0c2c85383bb78133d8c1e55edf3c97106/python_lsp_ruff-2.3.4-py3-none-any.whl", hash = "sha256:d2b60546f52cb19cdb4402f65c2f417e883b21c116a973eb52992d512e345083", size = 12084, upload-time = "2026-09-08T08:36:09.29Z" },
 ]
 
 [[package]]
