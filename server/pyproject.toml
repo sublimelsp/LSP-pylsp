@@ -1,7 +1,7 @@
 [project]
 name = "lsp-pylsp"
 version = "1.0"
-requires-python = ">=3.10.0"
+requires-python = ">=3.11"
 dependencies = [
     "black==26.10.0",
     "isort==9.0.2",
@@ -9,7 +9,7 @@ dependencies = [
     "ruff==0.16.10",
     "mypy==2.4.0",
     "pyls-isort==0.2.2",
-    "pylsp-mypy==0.8.0",
+    "pylsp-mypy==0.8.1",
     "python-lsp-black==2.0.0",
     "python-lsp-ruff==2.3.4",
     "python-lsp-server[all]==1.15.0"
