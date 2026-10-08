@@ -1,7 +1,7 @@
 [project]
 name = "lsp-pylsp"
 version = "1.0"
-requires-python = ">=3.10.0"
+requires-python = ">=3.11"
 dependencies = [
     "black==26.10.0",
     "isort==9.0.2",
