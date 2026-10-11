@@ -412,7 +412,7 @@ requires-dist = [
     { name = "jedi", specifier = "==0.20.0" },
     { name = "mypy", specifier = "==2.4.0" },
     { name = "pyls-isort", specifier = "==0.2.2" },
-    { name = "pylsp-mypy", specifier = "==0.8.1" },
+    { name = "pylsp-mypy", specifier = "==0.8.2" },
     { name = "python-lsp-black", specifier = "==2.0.0" },
     { name = "python-lsp-ruff", specifier = "==2.3.4" },
     { name = "python-lsp-server", extras = ["all"], specifier = "==1.15.0" },
@@ -615,15 +615,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/be/61/775e74d8b5e34af59
 
 [[package]]
 name = "pylsp-mypy"
-version = "0.8.1"
+version = "0.8.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mypy" },
     { name = "python-lsp-server" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d6/3d/b5f937e9156f8aa89559e1eb58dfa2e4dca4695d5a7546b75b1703a3ad71/pylsp_mypy-0.8.1.tar.gz", hash = "sha256:80f80ae357c1dac083ff3e2e9d3b03ba38328be235b2da39bd8de5e3dd085ec6", size = 20592, upload-time = "2026-10-04T16:49:31.975Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f9/17/176850ee08bc2c050cec47710f5d9721bd2e08669539786875b5b01df4e9/pylsp_mypy-0.8.2.tar.gz", hash = "sha256:6dd43c6c240883fc036e5b72862d036a3cf71dff8406a81eecd8831c6bc460b5", size = 20621, upload-time = "2026-10-11T16:32:35.871Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/a8/ce1761019f7f157ce8825a58be357c771581127f144a81ccc5203b5a5ec8/pylsp_mypy-0.8.1-py3-none-any.whl", hash = "sha256:642512f5c10c5e00e762c3cf6ae5e53e0f9f98d8ef960a2bb191c17bf9e48cc0", size = 16021, upload-time = "2026-10-04T16:49:30.932Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/0d/30dfb7cc0d21268400a54072ec3ab8c8a615c9f163fd7efc399c26c09fdb/pylsp_mypy-0.8.2-py3-none-any.whl", hash = "sha256:b8bd4873924fc8b6952b70280efd05d91ce37bfb210cda486642a791909a1bf4", size = 16027, upload-time = "2026-10-11T16:32:34.717Z" },
 ]
 
 [[package]]
