@@ -6,7 +6,7 @@ dependencies = [
     "black==26.10.0",
     "isort==9.0.2",
     "jedi==0.20.0",
-    "ruff==0.16.10",
+    "ruff==0.17.0",
     "mypy==2.4.0",
     "pyls-isort==0.2.2",
     "pylsp-mypy==0.8.1",
