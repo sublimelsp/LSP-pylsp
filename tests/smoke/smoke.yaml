@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sublimelsp/lsp_smoke_test/v1/smoke.schema.json
+file: sample.py
+# pycodestyle is the linter enabled by default. E225: missing whitespace around operator.
+expected_diagnostics:
+  source: pycodestyle
+  code: E225
