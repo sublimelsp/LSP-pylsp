@@ -5,11 +5,11 @@ on:
     branches:
       - master
     paths:
-      - 'requirements.txt'
+      - 'server/pyproject.toml'
 
 permissions:
+  contents: read
   pull-requests: write
-  repository-projects: write
 
 jobs:
   check_schema:
@@ -35,24 +35,33 @@ jobs:
         id: version-from
         run: echo "VERSION=$(rg -o 'python-lsp-server\[all\]==([\d.]+)' -r v\$1 "server/pyproject.toml")" >> "$GITHUB_OUTPUT"
 
+      # Other dependencies of the server don't change the settings.
       - name: Run schema_diff.sh script
         id: schema_diff
+        if: steps.version-from.outputs.VERSION != steps.version-to.outputs.VERSION
+        env:
+          VERSION_FROM: ${{ steps.version-from.outputs.VERSION }}
+          VERSION_TO: ${{ steps.version-to.outputs.VERSION }}
         run: |
+          changes=$(./scripts/schema_diff.sh "$VERSION_FROM" "$VERSION_TO")
           {
-            echo 'CHANGES<<EOF'
-            ./scripts/schema_diff.sh ${{ steps.version-from.outputs.VERSION }} ${{ steps.version-to.outputs.VERSION }}
-            echo EOF
+            echo 'CHANGES<<SCHEMA_DIFF_EOF'
+            echo "$changes"
+            echo 'SCHEMA_DIFF_EOF'
           } >> "$GITHUB_OUTPUT"
+          if [ "$changes" = 'No changes' ]; then echo 'CHANGED=false'; else echo 'CHANGED=true'; fi >> "$GITHUB_OUTPUT"
 
       - name: Find Comment
         uses: peter-evans/find-comment@v4
         id: find-comment
+        if: steps.schema_diff.outcome == 'success'
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v5
+        if: steps.schema_diff.outcome == 'success'
         with:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
@@ -63,3 +72,11 @@ jobs:
             ${{ steps.schema_diff.outputs.CHANGES }}
             ```
           edit-mode: replace
+
+      # So that Renovate doesn't automerge an update whose settings need review. Merge it by hand once the settings are
+      # updated.
+      - name: Fail if the schema changed
+        if: steps.schema_diff.outputs.CHANGED == 'true'
+        run: |
+          echo "::error::The pylsp settings schema changed, see the PR comment."
+          exit 1
