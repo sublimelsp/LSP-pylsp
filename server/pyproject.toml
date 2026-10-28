@@ -7,7 +7,7 @@ dependencies = [
     "isort==9.0.2",
     "jedi==0.20.1",
     "ruff==0.17.3",
-    "mypy==2.4.0",
+    "mypy==2.4.1",
     "pyls-isort==0.2.2",
     "pylsp-mypy==0.8.2",
     "python-lsp-black==2.0.0",
