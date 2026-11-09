@@ -153,11 +153,11 @@ wheels = [
 
 [[package]]
 name = "click"
-version = "8.5.0"
+version = "8.5.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c7/0e/7fa0ef50764b67090eca4114772a2abf8b6148198475e54c660b97caeee6/click-8.5.0.tar.gz", hash = "sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34", size = 382235, upload-time = "2026-08-26T13:33:14.56Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/45/37/edbf1b0707709013c0cf2e8317e03d97ed29bf4cac709fe328904ae92a38/click-8.5.1.tar.gz", hash = "sha256:9bbfada76703fd1d784b83eea012e3e8c6a001a876543ef104fa56aaaeb072b4", size = 399151, upload-time = "2026-11-06T17:37:01.021Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
+    { url = "https://files.pythonhosted.org/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl", hash = "sha256:8bb5376d2006950386f8c6427613334a2acadc5f559cb80e638d00b4df957e37", size = 126163, upload-time = "2026-11-06T17:36:59.287Z" },
 ]
 
 [[package]]
@@ -539,11 +539,11 @@ wheels = [
 
 [[package]]
 name = "platformdirs"
-version = "4.14.4"
+version = "4.14.5"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/a1/f1/602599e5879fce55f44b8021d28bd3817d87198a6be63e5c9d7e31891f0d/platformdirs-4.14.4.tar.gz", hash = "sha256:edb4a4aea570d69eb83e6b0973b588bbf868fb0dde2894106d6667739f017751", size = 71235, upload-time = "2026-11-04T07:38:46.024Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d7/9a/8475be631fb33ca1466915e70fd594c42a4e84b512db650eaa14f90fe75d/platformdirs-4.14.5.tar.gz", hash = "sha256:32e9921db7385aa8169bee4fe9501923e5715ba9fb7ea3b9c69b0d8e0639f7a1", size = 71464, upload-time = "2026-11-04T16:54:50.358Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/01/7c/562ddff1940562f7701a7e8b0a90a900be606af334cc5f69543293e2293a/platformdirs-4.14.4-py3-none-any.whl", hash = "sha256:89c1bfa30434b2dcc08655bcfb1789e1a6f97602c11ff990615d09a4b823d6be", size = 35357, upload-time = "2026-11-04T07:38:44.794Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/ae/ecbbbfd0e4343a6a521d49b3c8656fb4643dee2a4f6eaf941cf3280391a8/platformdirs-4.14.5-py3-none-any.whl", hash = "sha256:8e778c6fa421516f4d3369449f8df3b0e1b72c0e0005fe88e3ec772d0a14e750", size = 35402, upload-time = "2026-11-04T16:54:48.875Z" },
 ]
 
 [[package]]
@@ -750,14 +750,14 @@ global = [
 
 [[package]]
 name = "rope"
-version = "1.15.0"
+version = "1.15.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pytoolconfig", extra = ["global"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3d/6e/1dcdea174f5e704bd94a2dfba3445d53c8bc416360c9e3d805807584c9a7/rope-1.15.0.tar.gz", hash = "sha256:a9e82c9f5ca5a1054387c22fdf6c9de9e948af556138bda57d4da81d3378793a", size = 303258, upload-time = "2026-09-26T14:29:53.538Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ca/95/c5f4da93b11e12c28ca88e98b94447c7db9a1905cf7dd31520915b45ea79/rope-1.15.2.tar.gz", hash = "sha256:7ce304aa86350d9454533b6817d0c7c01301b0a4fad356d8372b5d77df35756f", size = 303988, upload-time = "2026-11-05T14:42:28.766Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/53/c8/143c8eda4f075a6c3ff343c19c8d3c98d7fc07fc54ec4953ef9c39674fd3/rope-1.15.0-py3-none-any.whl", hash = "sha256:1445f5c6eb3c2c6eda9f9532ed02513a09c1694bfee4a9291f7a86a990ac44a1", size = 209396, upload-time = "2026-09-26T14:29:50.358Z" },
+    { url = "https://files.pythonhosted.org/packages/0e/fd/76ea7d933bd576020e2cbfb14700dfc6b070f285959f027221abef6d6ac9/rope-1.15.2-py3-none-any.whl", hash = "sha256:77396ccec561815e8eeca6d2223a93e0d1d7488dcfa3e094cd301d7327cd756e", size = 209161, upload-time = "2026-11-05T14:42:26.929Z" },
 ]
 
 [[package]]
